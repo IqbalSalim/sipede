@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,500&display=swap');
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+@layer base {
+    h1 {
+        @apply text-2xl;
+    }
+
+    h2 {
+        @apply text-xl;
+    }
+
+    [type='text'],
+          [type='email'],
+          [type='url'],
+          [type='password'],
+          [type='number'],
+          [type='date'],
+          [type='datetime-local'],
+          [type='month'],
+          [type='search'],
+          [type='tel'],
+          [type='time'],
+          [type='week'],
+          [multiple],
+          textarea,
+          select {
+              @apply w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary;
+          }
+    [type='checkbox'],
+    [type='radio'] {
+        @apply text-blue-600 border-gray-300 rounded focus:ring-primary;
+    }
+
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 capitalize rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ring-offset-2;
+    }
+
+    .btn-default{
+        @apply bg-white hover:bg-gray-100 btn focus:ring-gray-200;
+    }
+
+    .btn-primary{
+        @apply text-white btn bg-primary hover:bg-blue-600 focus:ring-blue-700;
+    }
+    .btn-secondary{
+        @apply text-white btn bg-secondary hover:bg-green-600 focus:ring-green-700;
+    }
+    .btn-success{
+        @apply text-white btn bg-success hover:bg-green-600 focus:ring-green-700;
+    }
+    .btn-warning{
+        @apply text-white btn bg-warning hover:bg-yellow-600 focus:ring-yellow-700;
+    }
+    .btn-danger{
+        @apply text-white btn bg-danger hover:bg-red-600 focus:ring-red-700;
+    }
+
+    .btn-outline-primary{
+        @apply btn text-primary outline-primary hover:bg-primary hover:text-white focus:outline-none focus:ring-blue-700;
+    }
+    .btn-outline-secondary{
+        @apply btn text-secondary outline-secondary hover:bg-primary hover:text-white focus:outline-none focus:ring-pink-700;
+    }
+    .btn-outline-success{
+        @apply btn text-success outline-success hover:bg-success hover:text-white focus:outline-none focus:ring-green-700;
+    }
+    .btn-outline-warning{
+        @apply btn text-warning outline-warning hover:bg-warning hover:text-white focus:outline-none focus:ring-red-700;
+    }
+
+
+
+
+
+    /* .form-control{
+        @apply px-3 py-2 text-sm transition duration-200 border-2 border-gray-100 rounded-lg focus:shadow-sm focus:outline-none focus:ring-1 focus:bg-white focus:ring-primary;
+    } */
+
+
+
+}
+
+
