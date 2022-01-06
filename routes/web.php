@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CetakRekap;
+use App\Http\Controllers\CetakRkpdesa;
 use App\Http\Livewire\Apb\Guest;
 use App\Http\Livewire\Apb\IndexApb;
 use App\Http\Livewire\Apb\Show;
@@ -17,6 +18,7 @@ use App\Http\Livewire\Rka\GuestRka;
 use App\Http\Livewire\Rka\IndexRka;
 use App\Http\Livewire\Rkp\GuestRkp;
 use App\Http\Livewire\Rkp\IndexRkp;
+use App\Http\Livewire\Rkpdesa\IndexRkpdesa;
 use App\Http\Livewire\Tentang\GuestTentang;
 use App\Http\Livewire\User\IndexUser;
 use App\Http\Livewire\Usulan\IndexUsulan;
@@ -89,4 +91,9 @@ Route::group(['prefix' => '/usulan', 'as' => 'usulan', 'middleware' => 'auth'], 
     Route::get('/rekapan-usulan', RekapanUsulan::class)->name('.rekapan-usulan');
 });
 Route::get('/cetak-rekap', [CetakRekap::class, 'cetakExel'])->name('cetak-rekap');
+Route::get('/cetak-rkpdesa', [CetakRkpdesa::class, 'cetakExcel'])->name('cetak-rkpdesa');
+
+Route::get('/rkp-desa', IndexRkpdesa::class)->middleware(['auth'])->name('rkp-desa');
+
+
 require __DIR__ . '/auth.php';

@@ -11,8 +11,7 @@
         </div>
     </x-slot>
 
-    {{-- <livewire:usulan.create-usulan></livewire:usulan.create-usulan>
-    <livewire:usulan.update-usulan></livewire:usulan.update-usulan> --}}
+
 
     <div class="px-4 py-2 bg-white divide-y-2 rounded-lg shadow-lg divide-gray-2">
         <div class="flex flex-row justify-between py-2">

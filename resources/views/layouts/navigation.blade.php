@@ -35,6 +35,9 @@
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
+                    <x-nav-link :href="route('rkp-desa')" :active="request()->routeIs('rkp-desa')">
+                        {{ __('RKP Desa') }}
+                    </x-nav-link>
 
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
