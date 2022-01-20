@@ -17,6 +17,7 @@ class IndexRkpdesa extends Component
     public $queryString = ['search'];
     public $rkpdesa;
     public $kode_rekening, $sasaran, $waktu, $jumlah, $sumber, $pola, $rencana;
+    public $buttonEdit, $buttonDetail;
 
 
     public function mount()
@@ -44,6 +45,7 @@ class IndexRkpdesa extends Component
         $this->pola = $result->pola;
         $this->rencana = $result->rencana;
         $this->jumlah = (string) $result->jumlah;
+        $this->buttonEdit = 1;
     }
 
     public function resetForm()
@@ -79,5 +81,12 @@ class IndexRkpdesa extends Component
             'message' => 'RKP Desa Berhasil Diubah!',
             'text' => 'perubahan ini telah disimpan di tabel RKP Desa.'
         ]);
+    }
+
+
+    public function buttonDetail($id)
+    {
+        $this->emit('getDetail', $id);
+        $this->buttonDetail = 1;
     }
 }

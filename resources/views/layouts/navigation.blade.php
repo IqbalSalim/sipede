@@ -38,6 +38,9 @@
                     <x-nav-link :href="route('rkp-desa')" :active="request()->routeIs('rkp-desa')">
                         {{ __('RKP Desa') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('apb-desa')" :active="request()->routeIs('apb-desa')">
+                        {{ __('APB Desa') }}
+                    </x-nav-link>
 
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
