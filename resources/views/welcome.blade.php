@@ -57,7 +57,7 @@
                                 x-transition:leave="transition duration-1000" x-transition:leave-start="transform"
                                 x-transition:leave-end="transform -translate-x-full">
                                 <img class="object-cover object-center w-full rounded-lg md:w-full lg:h-72 lg:w-screen lg:rounded-lg opacity-15"
-                                    alt="3" src="{{ asset('images/img-2.jpg') }}" />
+                                    alt="3" src="{{ asset('images/img-3.jpg') }}" />
                             </div>
                         </div>
                     </div>
