@@ -9,6 +9,7 @@ use App\Http\Livewire\Apb\Show;
 use App\Http\Livewire\Apbdesa\IndexApbdesa;
 use App\Http\Livewire\Dashboard\IndexDashboard;
 use App\Http\Livewire\Editor;
+use App\Http\Livewire\Kegiatan\IndexKegiatan;
 use App\Http\Livewire\Musrenbang\GuestMusrenbang;
 use App\Http\Livewire\Musrenbang\IndexMusrenbang;
 use App\Http\Livewire\Profil\EditGambaranUmum;
@@ -98,6 +99,17 @@ Route::post('/cetak-apbdesa', [CetakAPB::class, 'cetakExcel'])->name('cetak-apbd
 
 Route::get('/rkp-desa', IndexRkpdesa::class)->middleware(['auth'])->name('rkp-desa');
 Route::get('/apb-desa', IndexApbdesa::class)->middleware(['auth'])->name('apb-desa');
+
+Route::get('/kegiatan', IndexKegiatan::class)->middleware(['auth'])->name('kegiatan');
+
+Route::group(['prefix' => '/master', 'as' => 'master', 'middleware' => 'auth'], function () {
+    Route::get('/kegiatan', IndexKegiatan::class)->name('.kegiatan');
+    Route::get('/user', IndexUser::class)->name('.user');
+    Route::get('visi-misi', EditVisiMisi::class)->name('.visi-misi');
+    Route::get('sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa');
+    Route::get('gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum');
+    Route::get('perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa');
+});
 
 
 require __DIR__ . '/auth.php';

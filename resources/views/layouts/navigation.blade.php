@@ -21,6 +21,41 @@
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
                             <x-nav-link :active="request()->routeIs('usulan.*')" class="cursor-pointer">
+                                {{ __('Master') }}
+                            </x-nav-link>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('master.kegiatan')"
+                                :active="request()->routeIs('master.kegiatan')">
+                                {{ __('Kegiatan') }}
+                            </x-dropdown-link>
+                            @hasrole('admin')
+                                <x-dropdown-link :href="route('master.user')" :active="request()->routeIs('master.user')">
+                                    {{ __('User') }}
+                                </x-dropdown-link>
+                            @endhasrole
+                            <x-dropdown-link :href="route('profil-desa.visi-misi')"
+                                :active="request()->routeIs('profil-desa.visi-misi')">
+                                {{ __('Visi Misi') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('profil-desa.sejarah-desa')"
+                                :active="request()->routeIs('profil-desa.sejarah-desa')">
+                                {{ __('Sejarah Desa') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('profil-desa.gambaran-umum')"
+                                :active="request()->routeIs('profil-desa.gambaran-umum')">
+                                {{ __('Gambaran Umum') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('profil-desa.perangkat-desa')"
+                                :active="request()->routeIs('profil-desa.perangkat-desa')">
+                                {{ __('Perangkat Desa') }}
+                            </x-dropdown-link>
+                        </x-slot>
+
+                    </x-dropdown>
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <x-nav-link :active="request()->routeIs('usulan.*')" class="cursor-pointer">
                                 {{ __('Usulan') }}
                             </x-nav-link>
                         </x-slot>
@@ -42,33 +77,7 @@
                         {{ __('APB Desa') }}
                     </x-nav-link>
 
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link :active="request()->routeIs('profil-desa.*')" class="cursor-pointer">
-                                {{ __('Profil Desa') }}
-                            </x-nav-link>
-                        </x-slot>
 
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('profil-desa.visi-misi')"
-                                :active="request()->routeIs('profil-desa.visi-misi')">
-                                {{ __('Visi Misi') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('profil-desa.sejarah-desa')"
-                                :active="request()->routeIs('profil-desa.sejarah-desa')">
-                                {{ __('Sejarah Desa') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('profil-desa.gambaran-umum')"
-                                :active="request()->routeIs('profil-desa.gambaran-umum')">
-                                {{ __('Gambaran Umum') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('profil-desa.perangkat-desa')"
-                                :active="request()->routeIs('profil-desa.perangkat-desa')">
-                                {{ __('Perangkat Desa') }}
-                            </x-dropdown-link>
-
-                        </x-slot>
-                    </x-dropdown>
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
                             <x-nav-link :active="request()->routeIs('transparansi.*')" class="cursor-pointer">
@@ -98,11 +107,6 @@
                     <x-nav-link :href="route('warta.warta-index')" :active="request()->routeIs('warta.warta-index')">
                         {{ __('Warta Kegiatan') }}
                     </x-nav-link>
-                    @hasrole('admin')
-                        <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
-                            {{ __('User') }}
-                        </x-nav-link>
-                    @endhasrole
                 </div>
 
             </div>
