@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-gradient-to-br from-blue-600 to-blue-400">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="flex flex-row items-center justify-between h-16">
+        <div class="flex flex-row items-center h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0 space-x-2">
@@ -12,9 +12,11 @@
                         <h1>sipede</h1>
                     </div>
                 </div>
+            </div>
 
-                <!-- Navigation Links -->
-                <div class="items-center hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
+            {{-- Navigation Links --}}
+            <div class="flex-1 item-center">
+                <div class="items-center justify-center hidden space-x-4 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -55,28 +57,33 @@
                     </x-dropdown>
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
-                            <x-nav-link :active="request()->routeIs('usulan.*')" class="cursor-pointer">
-                                {{ __('Usulan') }}
+                            <x-nav-link :active="request()->routeIs('perencanaan.*')" class="cursor-pointer">
+                                {{ __('Perencanaan') }}
                             </x-nav-link>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('usulan.usulan-kegiatan')"
-                                :active="request()->routeIs('usulan.usulan-kegiatan')">
-                                {{ __('Usulan Kegiatan') }}
+                            <x-dropdown-link :href="route('perencanaan.usulan')"
+                                :active="request()->routeIs('perencanaan.usulan')">
+                                {{ __('Usulan') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('usulan.rekapan-usulan')"
-                                :active="request()->routeIs('usulan.rekapan-usulan')">
+                            <x-dropdown-link :href="route('perencanaan.rekapan-usulan')"
+                                :active="request()->routeIs('perencanaan.rekapan-usulan')">
                                 {{ __('Rekapan Usulan') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('perencanaan.rkp-desa')"
+                                :active="request()->routeIs('perencanaan.rkp-desa')">
+                                {{ __('RKP Desa') }}
+                            </x-dropdown-link>
+                            {{-- <x-dropdown-link :href="route('perencanaan.rapb-desa')"
+                                :active="request()->routeIs('perencanaan.rapb-desa')">
+                                {{ __('RAPB Desa') }}
+                            </x-dropdown-link> --}}
+                            <x-dropdown-link :href="route('perencanaan.apb-desa')"
+                                :active="request()->routeIs('perencanaan.apb-desa')">
+                                {{ __('APB Desa') }}
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
-                    <x-nav-link :href="route('rkp-desa')" :active="request()->routeIs('rkp-desa')">
-                        {{ __('RKP Desa') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('apb-desa')" :active="request()->routeIs('apb-desa')">
-                        {{ __('APB Desa') }}
-                    </x-nav-link>
-
 
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
@@ -108,11 +115,10 @@
                         {{ __('Warta Kegiatan') }}
                     </x-nav-link>
                 </div>
-
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden sm:flex sm:items-center">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -161,7 +167,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    {{-- <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
@@ -220,5 +226,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 </nav>

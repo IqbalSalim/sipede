@@ -89,16 +89,10 @@ Route::get('/tentang-kami', GuestTentang::class)->name('tentang-kami');
 
 Route::get('/dashboard', IndexDashboard::class)->middleware(['auth'])->name('dashboard');
 
-Route::group(['prefix' => '/usulan', 'as' => 'usulan', 'middleware' => 'auth'], function () {
-    Route::get('/usulan-kegiatan', IndexUsulan::class)->name('.usulan-kegiatan');
-    Route::get('/rekapan-usulan', RekapanUsulan::class)->name('.rekapan-usulan');
-});
+
 Route::get('/cetak-rekap', [CetakRekap::class, 'cetakExel'])->name('cetak-rekap');
 Route::get('/cetak-rkpdesa', [CetakRkpdesa::class, 'cetakExcel'])->name('cetak-rkpdesa');
 Route::post('/cetak-apbdesa', [CetakAPB::class, 'cetakExcel'])->name('cetak-apbdesa');
-
-Route::get('/rkp-desa', IndexRkpdesa::class)->middleware(['auth'])->name('rkp-desa');
-Route::get('/apb-desa', IndexApbdesa::class)->middleware(['auth'])->name('apb-desa');
 
 Route::get('/kegiatan', IndexKegiatan::class)->middleware(['auth'])->name('kegiatan');
 
@@ -109,6 +103,14 @@ Route::group(['prefix' => '/master', 'as' => 'master', 'middleware' => 'auth'], 
     Route::get('sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa');
     Route::get('gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum');
     Route::get('perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa');
+});
+
+Route::group(['prefix' => '/perencanaan', 'as' => 'perencanaan', 'middleware' => 'auth'], function () {
+    Route::get('/usulan', IndexUsulan::class)->name('.usulan');
+    Route::get('/rekapan-usulan', RekapanUsulan::class)->name('.rekapan-usulan');
+    Route::get('/rkp-desa', IndexRkpdesa::class)->name('.rkp-desa');
+    // Route::get('/rapb-desa', IndexRkpdesa::class)->name('.rapb-desa');
+    Route::get('/apb-desa', IndexApbdesa::class)->name('.apb-desa');
 });
 
 
