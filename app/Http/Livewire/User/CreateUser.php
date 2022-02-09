@@ -14,13 +14,13 @@ class CreateUser extends Component
 
     public function render()
     {
-        $this->roles = Role::all();
+        $this->roles = Role::whereNotIn('name', ['admin'])->get();
         return view('livewire.user.create-user');
     }
 
     public function resetInput()
     {
-        $this->role = 'operator';
+        $this->role = null;
         $this->name = null;
         $this->email = null;
         $this->password = null;

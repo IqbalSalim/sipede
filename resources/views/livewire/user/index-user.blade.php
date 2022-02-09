@@ -1,5 +1,5 @@
 <div class="px-4 py-12 md:px-6 lg:px-8">
-    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-data="{ modal: false, modalEdit: false }"
+    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-cloak x-data="{ modal: false, modalEdit: false }"
         x-on:close-modal.window="modal = false" x-on:close-modal-edit.window="modalEdit = false">
 
         <x-slot name="header">

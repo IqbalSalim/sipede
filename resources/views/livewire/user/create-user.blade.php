@@ -27,10 +27,16 @@
                     <!-- Role -->
                     <div>
                         <x-label for="role" :value="__('Role')" />
-                        <x-input wire:model.defer="role" id="role" value="operator" class="block w-full mt-1 capitalize"
-                            type="text" name="role" disabled />
-
-
+                        {{-- <x-input wire:model.defer="role" id="role" class="block w-full mt-1 capitalize" type="text"
+                            name="role" disabled /> --}}
+                        <select
+                            class="block w-full mt-1 capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50'"
+                            name="role" id="role" wire:model="role">
+                            <option value="">-- Pilih Role --</option>
+                            @foreach ($roles as $row)
+                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                         <span class="text-sm text-danger">
                             @error('role')
                                 {{ $message }}

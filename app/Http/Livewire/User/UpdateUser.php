@@ -4,11 +4,17 @@ namespace App\Http\Livewire\User;
 
 use App\Models\User;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class UpdateUser extends Component
 {
-    public $user_id, $user_role, $user_name, $user_email;
+    public $user_id, $user_role, $user_name, $user_email, $roles;
     protected $listeners = ['getUser'];
+
+    public function mount()
+    {
+        $this->roles = Role::whereNotIn('name', ['admin'])->get();
+    }
 
     public function render()
     {
