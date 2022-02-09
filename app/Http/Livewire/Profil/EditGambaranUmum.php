@@ -11,7 +11,10 @@ class EditGambaranUmum extends Component
 
     public function mount()
     {
-        $profil = ProfilDesa::find(1);
+        $profil = ProfilDesa::first();
+        if (!$profil) {
+            return $this->gambaranUmum = '';
+        }
         $this->gambaranUmum = $profil->gambaran_umum;
     }
 
@@ -22,10 +25,16 @@ class EditGambaranUmum extends Component
 
     public function update()
     {
-        $profil = ProfilDesa::find(1);
-        $profil->update([
-            'gambaran_umum' => $this->gambaranUmum,
-        ]);
+        $profil = ProfilDesa::first();
+        if (!$profil) {
+            ProfilDesa::create([
+                'gambaran_umum' => $this->gambaranUmum,
+            ]);
+        } else {
+            $profil->update([
+                'gambaran_umum' => $this->gambaranUmum,
+            ]);
+        }
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
             'message' => 'Gambaran Umum Desa Berhasil Diubah!',

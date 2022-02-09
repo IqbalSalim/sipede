@@ -15,10 +15,10 @@ class CreateProfilDesasTable extends Migration
     {
         Schema::create('profil_desa', function (Blueprint $table) {
             $table->id();
-            $table->text('visi_misi');
-            $table->text('sejarah_desa');
-            $table->text('gambaran_umum');
-            $table->text('perangkat_desa');
+            $table->text('visi_misi')->nullable();
+            $table->text('sejarah_desa')->nullable();
+            $table->text('gambaran_umum')->nullable();
+            $table->string('perangkat_desa')->nullable();
             $table->timestamps();
         });
     }

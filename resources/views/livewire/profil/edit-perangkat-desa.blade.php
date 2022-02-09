@@ -38,7 +38,7 @@
                     </div>
 
                     <div>
-                        <img src="{{ asset('storage/' . $gambar) }}" alt="">
+                        <img src="{{ asset($gambar) }}" alt="">
                     </div>
                 </div>
             </div>

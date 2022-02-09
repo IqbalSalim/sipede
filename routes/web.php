@@ -73,14 +73,6 @@ Route::group(['prefix' => '/warta', 'as' => 'warta'], function () {
 });
 
 
-Route::group(['prefix' => '/profil-desa', 'as' => 'profil-desa'], function () {
-    Route::get('visi-misi', EditVisiMisi::class)->name('.visi-misi');
-    Route::get('sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa');
-    Route::get('gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum');
-    Route::get('perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa');
-});
-
-
 Route::get('/profil-desa', IndexProfil::class)->name('profil-desa');
 
 Route::get('/user', IndexUser::class)->name('user');
@@ -99,10 +91,10 @@ Route::get('/kegiatan', IndexKegiatan::class)->middleware(['auth'])->name('kegia
 Route::group(['prefix' => '/master', 'as' => 'master', 'middleware' => 'auth'], function () {
     Route::get('/kegiatan', IndexKegiatan::class)->name('.kegiatan');
     Route::get('/user', IndexUser::class)->name('.user');
-    Route::get('visi-misi', EditVisiMisi::class)->name('.visi-misi');
-    Route::get('sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa');
-    Route::get('gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum');
-    Route::get('perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa');
+    Route::get('/visi-misi', EditVisiMisi::class)->name('.visi-misi');
+    Route::get('/sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa');
+    Route::get('/gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum');
+    Route::get('/perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa');
 });
 
 Route::group(['prefix' => '/perencanaan', 'as' => 'perencanaan', 'middleware' => 'auth'], function () {

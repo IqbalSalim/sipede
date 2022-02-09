@@ -71,8 +71,8 @@
                             </th>
                             <th scope="col"
                                 class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
-                                <span>Edit</span>
-                                <span>Hapus</span>
+                                <span class="sr-only">Edit</span>
+                                <span class="sr-only">Hapus</span>
                             </th>
                         </tr>
                     </thead>

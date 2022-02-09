@@ -11,7 +11,10 @@ class EditVisiMisi extends Component
 
     public function mount()
     {
-        $profil = ProfilDesa::find(1);
+        $profil = ProfilDesa::first();
+        if (!$profil) {
+            return $this->visiMisi = '';
+        }
         $this->visiMisi = $profil->visi_misi;
     }
 
@@ -23,10 +26,17 @@ class EditVisiMisi extends Component
 
     public function update()
     {
-        $profil = ProfilDesa::find(1);
-        $profil->update([
-            'visi_misi' => $this->visiMisi,
-        ]);
+        $profil = ProfilDesa::first();
+        if (!$profil) {
+            ProfilDesa::create([
+                'visi_misi' => $this->visiMisi,
+            ]);
+        } else {
+            $profil->update([
+                'visi_misi' => $this->visiMisi,
+            ]);
+        }
+
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
             'message' => 'Visi Misi Desa Berhasil Diubah!',

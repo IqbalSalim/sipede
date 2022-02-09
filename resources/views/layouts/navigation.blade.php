@@ -36,20 +36,20 @@
                                     {{ __('User') }}
                                 </x-dropdown-link>
                             @endhasrole
-                            <x-dropdown-link :href="route('profil-desa.visi-misi')"
-                                :active="request()->routeIs('profil-desa.visi-misi')">
+                            <x-dropdown-link :href="route('master.visi-misi')"
+                                :active="request()->routeIs('master.visi-misi')">
                                 {{ __('Visi Misi') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('profil-desa.sejarah-desa')"
-                                :active="request()->routeIs('profil-desa.sejarah-desa')">
+                            <x-dropdown-link :href="route('master.sejarah-desa')"
+                                :active="request()->routeIs('master.sejarah-desa')">
                                 {{ __('Sejarah Desa') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('profil-desa.gambaran-umum')"
-                                :active="request()->routeIs('profil-desa.gambaran-umum')">
+                            <x-dropdown-link :href="route('master.gambaran-umum')"
+                                :active="request()->routeIs('master.gambaran-umum')">
                                 {{ __('Gambaran Umum') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('profil-desa.perangkat-desa')"
-                                :active="request()->routeIs('profil-desa.perangkat-desa')">
+                            <x-dropdown-link :href="route('master.perangkat-desa')"
+                                :active="request()->routeIs('master.perangkat-desa')">
                                 {{ __('Perangkat Desa') }}
                             </x-dropdown-link>
                         </x-slot>

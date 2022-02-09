@@ -11,7 +11,10 @@ class EditSejarahDesa extends Component
 
     public function mount()
     {
-        $profil = ProfilDesa::find(1);
+        $profil = ProfilDesa::first();
+        if (!$profil) {
+            return $this->sejarahDesa = '';
+        }
         $this->sejarahDesa = $profil->sejarah_desa;
     }
     public function render()
@@ -21,10 +24,16 @@ class EditSejarahDesa extends Component
 
     public function update()
     {
-        $profil = ProfilDesa::find(1);
-        $profil->update([
-            'sejarah_desa' => $this->sejarahDesa,
-        ]);
+        $profil = ProfilDesa::first();
+        if (!$profil) {
+            ProfilDesa::create([
+                'sejarah_desa' => $this->sejarahDesa,
+            ]);
+        } else {
+            $profil->update([
+                'sejarah_desa' => $this->sejarahDesa,
+            ]);
+        }
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
             'message' => 'Sejarah Desa Berhasil Diubah!',
