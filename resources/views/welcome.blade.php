@@ -23,6 +23,7 @@
                             repellendus sapiente
                             fugit cum nesciunt voluptates.</p>
                     </div>
+
                     {{-- Carousel --}}
                     <div class="relative rounded-lg" x-data="{
                         active: 1,

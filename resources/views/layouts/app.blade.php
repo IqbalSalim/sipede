@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
@@ -21,6 +22,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     @livewireStyles
+    <style>
+        [x-cloak] {
+            display: none
+        }
+
+    </style>
 
 
 </head>

@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="px-4 pt-12 pb-8 md:px-6 lg:px-8">
+    <div class="px-4 pt-12 pb-8 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
         <div class="px-4 py-4 bg-white rounded-lg shadow-lg">
             <div class="py-2 border-b-2 border-gray-200">
                 <h1 class="text-lg font-medium text-default">APB Desa</h1>
@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    <div class="px-4 py-8 md:px-6 lg:px-8">
+    <div class="px-4 py-8 mx-auto md:px-6 lg:px-8 max-w-7xl sm:px-6">
         <div class="px-4 py-4 bg-white rounded-lg shadow-lg">
             <div class="py-2 border-b-2 border-gray-200">
                 <h1 class="text-lg font-medium text-default">RKP Desa</h1>
@@ -148,7 +148,7 @@
         </div>
     </div>
 
-    <div class="px-4 py-8 md:px-6 lg:px-8">
+    <div class="px-4 py-8 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
         <div class="px-4 py-4 bg-white rounded-lg shadow-lg">
             <div class="py-2 border-b-2 border-gray-200">
                 <h1 class="text-lg font-medium text-default">RKA Desa</h1>
@@ -195,7 +195,7 @@
         </div>
     </div>
 
-    <div class="px-4 py-8 md:px-6 lg:px-8">
+    <div class="px-4 py-8 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
         <div class="px-4 py-4 bg-white rounded-lg shadow-lg">
             <div class="py-2 border-b-2 border-gray-200">
                 <h1 class="text-lg font-medium text-default">Musrenbang Desa</h1>

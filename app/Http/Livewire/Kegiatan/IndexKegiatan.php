@@ -2,24 +2,13 @@
 
 namespace App\Http\Livewire\Kegiatan;
 
-use App\Models\Bidang;
 use App\Models\Kegiatan;
-use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
 class IndexKegiatan extends Component
 {
-    public $cekModal = 0;
     protected $listeners = ['delete', 'render'];
-
-    // public function mount()
-    // {
-    // $query = Kegiatan::whereHas('subbidang', function (Builder $query) {
-    //     $query->select('subbidang.*')->where('nama', 'like', 'Sub Bidang Pertanahan');
-    // })->get();
-    // $this->kegiatans = Kegiatan::join('subbidangs', 'subbidangs.id', '=', 'kegiatans.subbidang_id')->select('subbidangs.bidang_id as a', 'subbidangs.kd_rek as b', 'subbidangs.nama as sub_nama', 'kegiatans.*')->get();
-    // dd($query);
-    // }
+    public $deleteId;
 
     public function render()
     {
@@ -28,14 +17,10 @@ class IndexKegiatan extends Component
         ]);
     }
 
-    public function tambahModal()
-    {
-        $this->cekModal = 1;
-    }
 
-    public function alertConfirm($id)
+    public function alertConfirm($kegiatan_id)
     {
-        $this->deleteId = $id;
+        $this->deleteId = $kegiatan_id;
         $this->dispatchBrowserEvent('swal:confirm', [
             'type' => 'warning',
             'message' => 'Apakah Anda Yakin?',
@@ -44,9 +29,9 @@ class IndexKegiatan extends Component
     }
     public function delete()
     {
-        // if ($this->deleteId) {
-        //     $usulan = Rkpdes::find($this->deleteId);
-        //     $usulan->delete();
-        // }
+        if ($this->deleteId) {
+            $kegiatan = Kegiatan::find($this->deleteId);
+            $kegiatan->delete();
+        }
     }
 }
