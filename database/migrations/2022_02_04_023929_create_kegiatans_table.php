@@ -18,15 +18,6 @@ class CreateKegiatansTable extends Migration
             $table->foreignId('subbidang_id')->constrained('subbidangs')->onUpdate('cascade')->onDelete('cascade');
             $table->string('kd_rek', 10);
             $table->string('nama');
-            $table->string('lokasi')->nullable();
-            $table->string('sdgs', 50)->nullable();
-            $table->integer('volume')->nullable();
-            $table->string('satuan', 50)->nullable();
-            $table->string('waktu')->nullable();
-            $table->bigInteger('jumlah')->nullable();
-            $table->string('sumber')->nullable();
-            $table->string('pola')->nullable();
-            $table->string('rencana')->nullable();
             $table->timestamps();
         });
     }

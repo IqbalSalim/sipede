@@ -12,15 +12,6 @@ class Kegiatan extends Model
         'subbidang_id',
         'kd_rek',
         'nama',
-        'lokasi',
-        'sdgs',
-        'volume',
-        'satuan',
-        'waktu',
-        'jumlah',
-        'sumber',
-        'pola',
-        'rencana',
     ];
 
     public function subbidang()

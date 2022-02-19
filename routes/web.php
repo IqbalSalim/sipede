@@ -33,6 +33,9 @@ use App\Models\ProfilDesa;
 use App\Models\Warta;
 use Illuminate\Support\Facades\Route;
 
+// use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Models\Permission;
+
 
 
 /*
@@ -47,6 +50,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // $permission = Permission::create(['name' => 'crud usulan']);
+    // $role = Role::where('name', 'sekretaris')->first();
+    // $permission = Permission::where('name', 'crud usulan')->first();
+    // $permission->assignRole($role);
+
+    // return false;
+
+
     $wartas = Warta::latest()->take(3)->get();
     return view('welcome', ['wartas' => $wartas]);
 })->name('welcome');

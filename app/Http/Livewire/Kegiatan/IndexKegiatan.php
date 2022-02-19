@@ -10,6 +10,8 @@ class IndexKegiatan extends Component
     protected $listeners = ['delete', 'render'];
     public $deleteId;
 
+
+
     public function render()
     {
         return view('livewire.kegiatan.index-kegiatan', [

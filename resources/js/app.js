@@ -1,9 +1,9 @@
 require("./bootstrap");
+require("./editor");
 
 import Alpine from "alpinejs";
-require("./editor");
-import intersect from "@alpinejs/intersect";
 import swal from "sweetalert";
+import intersect from "@alpinejs/intersect";
 
 Alpine.plugin(intersect);
 

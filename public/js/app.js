@@ -15427,18 +15427,17 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _alpinejs_intersect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @alpinejs/intersect */ "./node_modules/@alpinejs/intersect/dist/module.esm.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _alpinejs_intersect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @alpinejs/intersect */ "./node_modules/@alpinejs/intersect/dist/module.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-
 
 __webpack_require__(/*! ./editor */ "./resources/js/editor.js");
 
 
 
-alpinejs__WEBPACK_IMPORTED_MODULE_0___default().plugin(_alpinejs_intersect__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+alpinejs__WEBPACK_IMPORTED_MODULE_0___default().plugin(_alpinejs_intersect__WEBPACK_IMPORTED_MODULE_2__["default"]);
 window.Alpine = (alpinejs__WEBPACK_IMPORTED_MODULE_0___default());
 alpinejs__WEBPACK_IMPORTED_MODULE_0___default().start();
 

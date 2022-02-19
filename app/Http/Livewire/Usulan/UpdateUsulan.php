@@ -2,13 +2,24 @@
 
 namespace App\Http\Livewire\Usulan;
 
+use App\Models\Bidang;
 use App\Models\Rkpdes;
+use App\Models\Usulan;
 use Livewire\Component;
 
 class UpdateUsulan extends Component
 {
-    public $kategori, $kegiatan, $lokasi, $usulan_id, $usulan;
+    public $bidangs = null, $subbidangs = null, $kegiatans = null, $tahuns = null;
+    public $bidang, $subbidang, $kegiatan, $lokasi, $tahun, $usulan_id;
     protected $listeners = ['getUsulan'];
+
+    public function mount()
+    {
+        $this->bidangs = Bidang::select('id', 'nama')->get();
+        $this->tahuns = collect(range(6, -4))->map(function ($item) {
+            return (string) date('Y') - $item;
+        });
+    }
 
     public function render()
     {
@@ -17,11 +28,12 @@ class UpdateUsulan extends Component
 
     public function getUsulan($id)
     {
-        $this->usulan = Rkpdes::find($id);
-        $this->kategori = $this->usulan->kategori;
-        $this->kegiatan = $this->usulan->kegiatan;
-        $this->lokasi = $this->usulan->lokasi;
-        $this->usulan_id = $this->usulan->id;
+        $usulan = Usulan::find($id);
+        $this->tahun = $usulan->tahun;
+        $this->bidang = $usulan->kegiatan->subbidang->bidang_id;
+        $this->subbidang = $usulan->kegiatan->subbidang_id;
+        $this->kegiatan = $usulan->kegiatan->nama;
+        $this->lokasi = $usulan->kegiatan->nama;
     }
 
     public function resetForm()

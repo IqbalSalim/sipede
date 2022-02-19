@@ -1,4 +1,4 @@
-<div class="" x-data="{ modal: false, modalEdit: false }" x-on:close-modal.window="modal = false"
+<div class="" x-cloak x-data="{ modal: false, modalEdit: false }" x-on:close-modal.window="modal = false"
     x-on:close-modal-edit.window="modalEdit = false">
 
     <x-slot name="header">

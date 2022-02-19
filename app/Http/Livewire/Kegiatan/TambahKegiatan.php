@@ -70,5 +70,6 @@ class TambahKegiatan extends Component
         $this->subbidang = null;
         $this->kegiatan = null;
         $this->kd_rek = null;
+        $this->subbidangs = null;
     }
 }

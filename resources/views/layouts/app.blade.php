@@ -13,15 +13,15 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
 
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     @livewireStyles
+
     <style>
         [x-cloak] {
             display: none
@@ -76,6 +76,77 @@
                     }
                 });
         });
+
+        window.addEventListener('swal:addDescription', event => {
+            swal({
+                    text: event.detail.message,
+                    content: "input",
+                    button: {
+                        text: "Submit",
+                        closeModal: false,
+                    },
+                })
+                .then((description) => {
+                    if (description) {
+                        window.livewire.emit('updateStatus', description);
+                    }
+                }).then((result) => {
+                    swal.stopLoading();
+                    swal.close();
+                });
+
+        });
+
+        function dropdown() {
+            return {
+                options: [],
+                selected: [],
+                show: false,
+                open() {
+                    this.show = true;
+                },
+                close() {
+                    this.show = false;
+                },
+                isOpen() {
+                    return this.show === true;
+                },
+                select(index, event) {
+                    if (!this.options[index].selected) {
+                        this.options[index].selected = true;
+                        this.options[index].element = event.target;
+                        this.selected.push(index);
+                    } else {
+                        this.selected.splice(this.selected.lastIndexOf(index), 1);
+                        this.options[index].selected = false;
+                    }
+                },
+                remove(index, option) {
+                    this.options[option].selected = false;
+                    this.selected.splice(index, 1);
+                },
+                loadOptions() {
+                    const options = document.getElementById("select").options;
+                    for (let i = 0; i < options.length; i++) {
+                        this.options.push({
+                            value: options[i].value,
+                            text: options[i].innerText,
+                            selected: options[i].getAttribute("selected") != null ?
+                                options[i].getAttribute("selected") : false,
+                        });
+                    }
+                },
+                selectedValues() {
+                    return this.selected.map((option) => {
+                        return this.options[option].value;
+                    });
+                },
+                clearValues() {
+                    this.selected = [];
+                }
+            };
+
+        };
     </script>
 </body>
 
