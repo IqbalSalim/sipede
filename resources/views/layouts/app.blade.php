@@ -97,6 +97,28 @@
 
         });
 
+        window.addEventListener('swal:addDataUsulan', event => {
+            swal({
+                    text: event.detail.message,
+                    content: {
+                        element: '<input id="input1" type="text" placeholder="Home" style="display:block !important;">',
+                    },
+                    button: {
+                        text: "Submit",
+                        closeModal: false,
+                    },
+                })
+                .then((description) => {
+                    if (description) {
+                        window.livewire.emit('updateStatus', description);
+                    }
+                }).then((result) => {
+                    swal.stopLoading();
+                    swal.close();
+                });
+
+        });
+
         function dropdown() {
             return {
                 options: [],

@@ -66,10 +66,6 @@
                                 :active="request()->routeIs('perencanaan.usulan')">
                                 {{ __('Usulan') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.rekapan-usulan')"
-                                :active="request()->routeIs('perencanaan.rekapan-usulan')">
-                                {{ __('Rekapan Usulan') }}
-                            </x-dropdown-link>
                             <x-dropdown-link :href="route('perencanaan.rkp-desa')"
                                 :active="request()->routeIs('perencanaan.rkp-desa')">
                                 {{ __('RKP Desa') }}

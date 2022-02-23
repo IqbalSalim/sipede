@@ -110,7 +110,6 @@ Route::group(['prefix' => '/master', 'as' => 'master', 'middleware' => 'auth'], 
 
 Route::group(['prefix' => '/perencanaan', 'as' => 'perencanaan', 'middleware' => 'auth'], function () {
     Route::get('/usulan', IndexUsulan::class)->name('.usulan');
-    Route::get('/rekapan-usulan', RekapanUsulan::class)->name('.rekapan-usulan');
     Route::get('/rkp-desa', IndexRkpdesa::class)->name('.rkp-desa');
     // Route::get('/rapb-desa', IndexRkpdesa::class)->name('.rapb-desa');
     Route::get('/apb-desa', IndexApbdesa::class)->name('.apb-desa');

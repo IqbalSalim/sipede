@@ -52,11 +52,18 @@
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
                                         {{ $usulan->tahun }}</td>
                                 </tr>
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Keterangan</th>
-                        <td class="px-4 py-3 text-sm  text-danger md:px-6 whitespace-nowrap">
-                                        {{ $usulan->keterangan }}</td>
-                                </tr>
+                                @if ($usulan->status->value == 'sesuai')
+                                    <tr>
+                                        <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Mendukung SDGs Desa Ke</th>
+                        <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
+                                            {{ $usulan->sdgs }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Volume</th>
+                        <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
+                                            {{ $usulan->volume . ' ' . $usulan->satuan }}</td>
+                                    </tr>
+                                @endif
                                 <tr>
                                     <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Status</th>
                         <td  @class([
@@ -67,24 +74,32 @@
                         ])>
                                             {{ $usulan->status->value }}</td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
- @endif
-                    </div>
+                                 @if ($usulan->status->value == 'tidak sesuai')
+                                <tr>
+                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Keterangan</th>
+                        <td class="px-4 py-3 text-sm  text-danger md:px-6 whitespace-nowrap">
+                                        {{ $usulan->keterangan }}</td>
+                                </tr>
+                @endif
+
+                </tbody>
+                </table>
+            </div>
+            @endif
+        </div>
 
 
-                    <div>
-                        <div class="flex items-center justify-between mt-8">
-                            <button type="submit" class="text-sm btn-primary">
-                                {{ __('Submit') }}
-                            </button>
-                            <button type="button" @click="modalDetail = false" class="text-sm btn-secondary">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-
+        <div>
+            <div class="flex items-center justify-between mt-8">
+                <button type="submit" class="text-sm btn-primary">
+                    {{ __('Submit') }}
+                </button>
+                <button type="button" @click="modalDetail = false" class="text-sm btn-secondary">
+                    Close
+                </button>
             </div>
         </div>
+
     </div>
+</div>
+</div>

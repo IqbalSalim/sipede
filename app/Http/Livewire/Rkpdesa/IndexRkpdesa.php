@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Rkpdesa;
 
 use App\Models\Rkpdes;
+use App\Models\Usulan;
 use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -28,8 +29,8 @@ class IndexRkpdesa extends Component
     {
         return view('livewire.rkpdesa.index-rkpdesa', [
             'listrkp' => $this->search === null ?
-                Rkpdes::latest()->paginate($this->paginate) :
-                Rkpdes::where('kegiatan', 'like', '%' . $this->search . '%')->paginate($this->paginate)
+                Usulan::latest()->paginate($this->paginate) :
+                Usulan::where('kegiatan', 'like', '%' . $this->search . '%')->paginate($this->paginate)
         ]);
     }
 

@@ -17,8 +17,9 @@ class IndexUsulan extends Component
     public $filter_tahun, $filter_bidang;
     public $bidangs;
     public $paginate = 5, $search, $deleteId, $status, $usulan, $statusTemp, $bidang, $tahun;
+    protected $queryString = ['search'];
 
-    protected $listeners = ['delete', 'render', 'updateStatus'];
+    protected $listeners = ['delete', 'render', 'updateStatus', 'updateStatusSesuai'];
 
     public function mount()
     {
@@ -70,6 +71,11 @@ class IndexUsulan extends Component
             ]);
             $this->statusTemp = $this->status[$id];
             $this->status[$id] = $this->usulan->status->value;
+        } elseif ($this->status[$id] == 'sesuai') {
+            $this->emit('getUsulanStatus', $id, 'sesuai');
+            $this->dispatchBrowserEvent('open-modal-status');
+            $this->statusTemp = $this->status[$id];
+            $this->status[$id] = $this->usulan->status->value;
         } else {
             $this->usulan->update([
                 'status' => $this->status[$id],
@@ -92,6 +98,21 @@ class IndexUsulan extends Component
         ]);
 
         $this->status[$this->usulan->id] = $this->usulan->status->value;
+
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'success',
+            'message' => 'Status Usulan Kegiatan Berhasil Diubah!',
+            'text' => 'perubahan ini telah disimpan di tabel Usulan Kegiatan.'
+        ]);
+    }
+
+    public function updateStatusSesuai($data)
+    {
+        $data['status'] = $this->statusTemp;
+        $this->usulan->update($data);
+
+        $this->status[$this->usulan->id] = $this->usulan->status->value;
+        $this->dispatchBrowserEvent('close-modal-status');
 
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',

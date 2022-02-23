@@ -43,6 +43,7 @@ class UpdateUsulan extends Component
         $this->lokasi = null;
         $this->usulan_id = null;
         $this->usulan = null;
+        $this->resetValidation();
     }
 
     public function update()

@@ -102,7 +102,7 @@
                         <select id="select" class="hidden">
                             <option value="Dusun I Mimbaru">Dusun I Mimbaru</option>
                             <option value="Dusun II Sipatana">Dusun II Sipatana</option>
-                            <option value="Dusun III Monggoyito">Dusun III Monggoyito</option>
+                            <option value="Dusun III Monggiyoto">Dusun III Monggiyoto</option>
                         </select>
 
 
