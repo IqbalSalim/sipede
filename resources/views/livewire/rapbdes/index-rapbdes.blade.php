@@ -1,27 +1,37 @@
-<div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8" x-cloak x-data="{ modal: false, modalDetail:false }"
-    x-on:close-modal.window="modal = false" x-on:close-modal-detail.window="modal-detail = false">
-    <div class="px-4 py-2 bg-white rounded-lg shadow-lg">
+<div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-cloak
+        x-data="{ modal: false, modalEdit: false, modalDetail: false, modalStatus: false, open1:true, open2:false, open3:false, open4:false, open5:false, }"
+        x-on:close-modal.window="modal = false" x-on:close-modal-edit.window="modalEdit = false"
+        x-on:open-modal-status.window="modalStatus = true" x-on:close-modal-status.window="modalStatus = false">
         <x-slot name="header">
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                {{ __('RKP Desa') }}
+                {{ __('Usulan Kegiatan') }}
             </h2>
             <div class="flex flex-row space-x-1 text-sm text-gray-400">
                 <div class="hover:text-primary"><a href="/dashboard">Dashboard</a></div>
                 <div>-</div>
-                <div>RKP Desa</div>
+                <div>Rancangan APB Desa</div>
             </div>
         </x-slot>
 
-        <livewire:rkpdesa.detail-rkpdesa></livewire:rkpdesa.detail-rkpdesa>
-        <livewire:rkpdesa.edit-rkpdesa></livewire:rkpdesa.edit-rkpdesa>
+        {{-- <livewire:usulan.create-usulan></livewire:usulan.create-usulan>
+        <livewire:usulan.update-usulan></livewire:usulan.update-usulan> --}}
+
+
+
 
 
 
         <div class="flex flex-row py-2 space-x-8 border-b-2 border-gray-200">
             <div class="self-end">
-                <a href="{{ route('cetak-rkpdesa') }}" class="text-sm btn-success">Cetak RKP Desa</a>
+                <button class="text-sm btn-primary" @click="modal = true">Tambah Pendapatan</button>
             </div>
             <div class="flex flex-row items-end justify-end flex-1 space-x-6">
+
+            </div>
+        </div>
+        <div class="flex flex-row items-center justify-between py-2">
+            <div class="flex flex-row space-x-4">
                 <div>
                     <x-label for="paginate" :value="__('Item')" />
                     <select name="paginate" id="paginate" wire:model="paginate"
@@ -40,25 +50,14 @@
                         @endforeach
                     </select>
                 </div>
-                <div>
-                    <x-label for="bidang" :value="__('Bidang')" />
-                    <select name="bidang" id="bidang" wire:model="bidang"
-                        class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                        <option value="">-- Semua Bidang --</option>
-                        @foreach ($bidangs as $item)
-                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                        @endforeach
-                    </select>
-                </div>
+            </div>
 
-                <div class="md:w-3/12">
-                    <x-label for="search" :value="__('Nama Kegiatan')" />
-                    <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
-                        type="text" name="search" autofocus />
-                </div>
+            <div class="md:w-3/12">
+                <x-label for="search" :value="__('Nama Kegiatan')" />
+                <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
+                    type="text" name="search" autofocus />
             </div>
         </div>
-
         <div class="w-full overflow-x-auto md:overflow-hidden">
             <table class="min-w-full mt-2 divide-y divide-gray-200 table-auto">
                 <thead class="bg-gray-50">
@@ -69,29 +68,25 @@
                         </th>
                         <th scope="col"
                             class="w-3/12 px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
-                            Sub Bidang
+                            Kategori
+                        </th>
+                        <th scope="col"
+                            class="w-3/12 px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
+                            Kode Rekening
                         </th>
                         <th scope="col"
                             class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
-                            Kegiatan
+                            Uraian
                         </th>
                         <th scope="col"
                             class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
-                            Lokasi
+                            Anggaran
                         </th>
-                        @cannot('crud usulan')
-                            <th scope="col"
-                                class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
-                                Status
-                            </th>
-                        @endcannot
-
+                        <th scope="col"
+                            class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
+                            Sumber Dana
+                        </th>
                         @can('crud usulan')
-                            <th scope="col"
-                                class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
-                                Status
-                            </th>
-
                             <th scope="col"
                                 class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
                                 <span class="sr-only">Edit</span>
@@ -102,38 +97,38 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @php $no = 1 @endphp
-                    @foreach ($kegiatans as $row)
+                    @foreach ($pendapatans as $row)
                         <tr>
                             <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
                                 {{ $no++ }}
                             </td>
                             <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
-                                {{ $row->kegiatan->subbidang->nama }}
+                                {{ $row->kategoriPendapatan->kategori }}
                             </td>
                             <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
-                                {{ $row->kegiatan->nama }}
+                                {{ $row->kategoriPendapatan->kd_rek }}
                             </td>
                             <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
-                                {{ $row->lokasi }}
+                                {{ $row->uraian }}
                             </td>
-                            @if ($row->jumlah == null || ($row->jumlah = ''))
-                                <td class="px-4 py-3 text-xs font-medium capitalize text-danger md:px-6">
-                                    belum lengkap
-                                </td>
-                            @else
-                                <td class="px-4 py-3 text-xs font-medium capitalize text-success md:px-6">
-                                    lengkap
-                                </td>
-                            @endif
+                            <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
+                                {{ $row->anggaran }}
+                            </td>
+                            <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
+                                {{ $row->sumber_dana }}
+                            </td>
+
                             @can('crud usulan')
                                 <td class="px-2 md:px-6">
                                     <div class="flex flex-row items-center space-x-4">
                                         <button type="button" class="text-xs btn-primary"
-                                            wire:click="$emit('getDetailRkp', {{ $row->id }})"
+                                            wire:click="$emit('getDetailUsulan', {{ $row->id }})"
                                             @click="modalDetail = true">detail</button>
                                         <button type="button" class="text-xs btn-secondary"
-                                            wire:click="$emit('getEditRkp', {{ $row->id }})"
-                                            @click="modal = true">edit</button>
+                                            wire:click="$emit('getUsulan', {{ $row->id }})"
+                                            @click="modalEdit = true">edit</button>
+                                        <button wire:click="alertConfirm({{ $row->id }})" type="button"
+                                            class="text-xs btn-danger">hapus</button>
                                     </div>
                                 </td>
                             @endcan
@@ -141,7 +136,9 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $kegiatans->links() }}
+            {{ $pendapatans->links() }}
         </div>
+
+
     </div>
 </div>

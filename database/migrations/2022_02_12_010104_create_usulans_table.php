@@ -22,6 +22,7 @@ class CreateUsulansTable extends Migration
             $table->string('sdgs', 50)->nullable();
             $table->integer('volume')->nullable();
             $table->string('satuan', 50)->nullable();
+            $table->string('sasaran')->nullable();
             $table->string('waktu')->nullable();
             $table->bigInteger('jumlah')->nullable();
             $table->string('sumber')->nullable();

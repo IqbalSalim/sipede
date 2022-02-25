@@ -17,6 +17,7 @@ class Usulan extends Model
         'sdgs',
         'volume',
         'satuan',
+        'sasaran',
         'waktu',
         'jumlah',
         'sumber',

@@ -17,6 +17,7 @@ use App\Http\Livewire\Profil\EditPerangkatDesa;
 use App\Http\Livewire\Profil\EditSejarahDesa;
 use App\Http\Livewire\Profil\EditVisiMisi;
 use App\Http\Livewire\Profil\IndexProfil;
+use App\Http\Livewire\Rapbdes\IndexRapbdes;
 use App\Http\Livewire\Rka\GuestRka;
 use App\Http\Livewire\Rka\IndexRka;
 use App\Http\Livewire\Rkp\GuestRkp;
@@ -111,7 +112,7 @@ Route::group(['prefix' => '/master', 'as' => 'master', 'middleware' => 'auth'], 
 Route::group(['prefix' => '/perencanaan', 'as' => 'perencanaan', 'middleware' => 'auth'], function () {
     Route::get('/usulan', IndexUsulan::class)->name('.usulan');
     Route::get('/rkp-desa', IndexRkpdesa::class)->name('.rkp-desa');
-    // Route::get('/rapb-desa', IndexRkpdesa::class)->name('.rapb-desa');
+    Route::get('/rapb-desa', IndexRapbdes::class)->name('.rapb-desa');
     Route::get('/apb-desa', IndexApbdesa::class)->name('.apb-desa');
 });
 

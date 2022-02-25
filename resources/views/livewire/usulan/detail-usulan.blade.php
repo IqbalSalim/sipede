@@ -19,53 +19,53 @@
 
 
             <div class="flex flex-col flex-1 px-4 py-2 overflow-auto h-96">
-
-
                 @if ($usulan != null)
-                    <div>
-                        <table class="min-w-full mt-2 table-auto">
-                            <tbody class="divide-y-2 divide-gray-200">
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Bidang</th>
+
+
+
+                    <table class="min-w-full mt-2 table-auto">
+                        <tbody class="divide-y-2 divide-gray-200">
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Bidang</th>
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
-                                        {{ $usulan->kegiatan->subbidang->bidang->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Sub Bidang</th>
+                                    {{ $usulan->kegiatan->subbidang->bidang->nama }}</td>
+                            </tr>
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Sub Bidang</th>
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
-                                        {{ $usulan->kegiatan->subbidang->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Kegiatan</th>
+                                    {{ $usulan->kegiatan->subbidang->nama }}</td>
+                            </tr>
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Kegiatan</th>
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
-                                        {{ $usulan->kegiatan->nama }}
-                                        </td>
-                                </tr>
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Kode Rekening</th>
+                                    {{ $usulan->kegiatan->nama }}
+                                    </td>
+                            </tr>
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Kode Rekening</th>
                         <td class="px-4 py-3 text-sm font-medium  text-success md:px-6 whitespace-nowrap">
-                                        {{ $usulan->kegiatan->subbidang->bidang_id .' ' .$usulan->kegiatan->subbidang->kd_rek .' ' .$usulan->kegiatan->kd_rek }}
-                                        </td>
+                                    {{ $usulan->kegiatan->subbidang->bidang_id .' ' .$usulan->kegiatan->subbidang->kd_rek .' ' .$usulan->kegiatan->kd_rek }}
+                                    </td>
+                            </tr>
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Tahun</th>
+                        <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
+                                    {{ $usulan->tahun }}</td>
+                            </tr>
+                            @if ($usulan->status->value == 'sesuai')
+                                <tr>
+                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Mendukung SDGs Desa Ke</th>
+                        <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
+                                        {{ $usulan->sdgs }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Tahun</th>
+                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Volume</th>
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
-                                        {{ $usulan->tahun }}</td>
+                                        {{ $usulan->volume . ' ' . $usulan->satuan }}</td>
                                 </tr>
-                                @if ($usulan->status->value == 'sesuai')
-                                    <tr>
-                                        <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Mendukung SDGs Desa Ke</th>
-                        <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
-                                            {{ $usulan->sdgs }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Volume</th>
-                        <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
-                                            {{ $usulan->volume . ' ' . $usulan->satuan }}</td>
-                                    </tr>
-                                @endif
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Status</th>
+                            @endif
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Status</th>
                         <td  @class([
                             'px-4 py-3 text-sm capitalize font-medium  md:px-6 whitespace-nowrap',
                             'text-warning' => $usulan->status->value == 'verifikasi',
@@ -74,32 +74,32 @@
                         ])>
                                             {{ $usulan->status->value }}</td>
                                     </tr>
-                                 @if ($usulan->status->value == 'tidak sesuai')
-                                <tr>
-                                    <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Keterangan</th>
-                        <td class="px-4 py-3 text-sm  text-danger md:px-6 whitespace-nowrap">
-                                        {{ $usulan->keterangan }}</td>
-                                </tr>
+                            @if ($usulan->status->value == 'tidak sesuai')
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Keterangan</th>
+                                         <td class="px-4 py-3 text-sm  text-danger md:px-6 whitespace-nowrap">
+                                    {{ $usulan->keterangan }}</td>
+                            </tr>
                 @endif
 
                 </tbody>
                 </table>
+
+                @endif
             </div>
-            @endif
-        </div>
 
 
-        <div>
-            <div class="flex items-center justify-between mt-8">
-                <button type="submit" class="text-sm btn-primary">
-                    {{ __('Submit') }}
-                </button>
-                <button type="button" @click="modalDetail = false" class="text-sm btn-secondary">
-                    Close
-                </button>
+            <div>
+                <div class="flex items-center justify-between mt-8">
+                    <button type="submit" class="text-sm btn-primary">
+                        {{ __('Submit') }}
+                    </button>
+                    <button type="button" @click="modalDetail = false" class="text-sm btn-secondary">
+                        Close
+                    </button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 </div>

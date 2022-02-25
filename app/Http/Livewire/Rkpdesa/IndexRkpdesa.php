@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Rkpdesa;
 
+use App\Models\Bidang;
 use App\Models\Rkpdes;
 use App\Models\Usulan;
 use Illuminate\Http\Request;
@@ -16,50 +17,27 @@ class IndexRkpdesa extends Component
     public $paginate = 10, $search;
 
     public $queryString = ['search'];
-    public $rkpdesa;
-    public $kode_rekening, $sasaran, $waktu, $jumlah, $sumber, $pola, $rencana;
-    public $buttonEdit, $buttonDetail;
+    public $bidang, $tahun;
 
+    protected $listeners = ['render'];
 
     public function mount()
     {
+        $this->tahun = date('Y') + 1;
+        $this->bidangs = Bidang::all();
     }
-
     public function render()
     {
         return view('livewire.rkpdesa.index-rkpdesa', [
-            'listrkp' => $this->search === null ?
-                Usulan::latest()->paginate($this->paginate) :
-                Usulan::where('kegiatan', 'like', '%' . $this->search . '%')->paginate($this->paginate)
+            'kegiatans' => ($this->search === null) ?
+                Usulan::where('tahun', $this->tahun)->where('status', 'sesuai')->cariBidang($this->bidang)->paginate($this->paginate) :
+                Usulan::where('tahun', $this->tahun)->where('status', 'sesuai')->cariBidang($this->bidang)->cariKegiatan($this->search)->paginate($this->paginate),
+            'tahuns' => Usulan::select('tahun')->groupBy('tahun')->get(),
         ]);
     }
 
-    public function getRowRkp($id)
-    {
-        $result = Rkpdes::find($id);
-        $this->rkpdesa  = $result;
 
-        $this->kode_rekening = $result->kode_rekening;
-        $this->sasaran = $result->sasaran;
-        $this->waktu = $result->waktu;
-        $this->sumber = $result->sumber;
-        $this->pola = $result->pola;
-        $this->rencana = $result->rencana;
-        $this->jumlah = (string) $result->jumlah;
-        $this->buttonEdit = 1;
-    }
 
-    public function resetForm()
-    {
-        $this->kode_rekening = null;
-        $this->sasaran = null;
-        $this->waktu = null;
-        $this->jumlah = null;
-        $this->sumber = null;
-        $this->pola = null;
-        $this->rencana = null;
-        $this->rkpdesa = null;
-    }
 
     public function simpan()
     {
@@ -82,12 +60,5 @@ class IndexRkpdesa extends Component
             'message' => 'RKP Desa Berhasil Diubah!',
             'text' => 'perubahan ini telah disimpan di tabel RKP Desa.'
         ]);
-    }
-
-
-    public function buttonDetail($id)
-    {
-        $this->emit('getDetail', $id);
-        $this->buttonDetail = 1;
     }
 }

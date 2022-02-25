@@ -70,10 +70,10 @@
                                 :active="request()->routeIs('perencanaan.rkp-desa')">
                                 {{ __('RKP Desa') }}
                             </x-dropdown-link>
-                            {{-- <x-dropdown-link :href="route('perencanaan.rapb-desa')"
+                            <x-dropdown-link :href="route('perencanaan.rapb-desa')"
                                 :active="request()->routeIs('perencanaan.rapb-desa')">
                                 {{ __('RAPB Desa') }}
-                            </x-dropdown-link> --}}
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('perencanaan.apb-desa')"
                                 :active="request()->routeIs('perencanaan.apb-desa')">
                                 {{ __('APB Desa') }}

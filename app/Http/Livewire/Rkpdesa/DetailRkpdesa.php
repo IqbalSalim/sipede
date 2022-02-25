@@ -3,23 +3,26 @@
 namespace App\Http\Livewire\Rkpdesa;
 
 use App\Models\Rkpdes;
+use App\Models\Usulan;
 use Livewire\Component;
 
 class DetailRkpdesa extends Component
 {
-    public $detail;
+    public $rkpId;
 
     protected $listeners = [
-        'getDetail',
+        'getDetailRkp',
     ];
 
     public function render()
     {
-        return view('livewire.rkpdesa.detail-rkpdesa');
+        return view('livewire.rkpdesa.detail-rkpdesa', [
+            'rkp' => Usulan::find($this->rkpId),
+        ]);
     }
 
-    public function getDetail($id)
+    public function getDetailRkp($id)
     {
-        $this->detail = Rkpdes::find($id);
+        $this->rkpId = $id;
     }
 }
