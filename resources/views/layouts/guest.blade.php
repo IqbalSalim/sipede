@@ -18,6 +18,13 @@
 
     @livewireStyles
 
+    <style>
+        [x-cloak] {
+            display: none
+        }
+
+    </style>
+
 </head>
 
 <body x-data="{shown:false, open: false}" class="bg-gray-100">

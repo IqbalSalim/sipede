@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-gray-100" x-data="{ modalShow: false }">
+    <div class="bg-gray-100" x-cloak x-data="{ modalShow: false }">
         <livewire:rkp.show-rkp></livewire:rkp.show-rkp>
         <div class="px-4 py-12 md:px-6 lg:px-8">
             <div class="px-4 py-4 bg-white rounded-lg shadow-lg">
