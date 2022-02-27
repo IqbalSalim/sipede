@@ -14,7 +14,7 @@
         </x-slot>
 
         <livewire:rapbdes.create-rapbdes></livewire:rapbdes.create-rapbdes>
-        {{-- <livewire:usulan.update-usulan></livewire:usulan.update-usulan> --}}
+        <livewire:rapbdes.edit-rapbdes></livewire:rapbdes.edit-rapbdes>
 
 
 
@@ -52,7 +52,7 @@
             </div>
 
             <div class="md:w-3/12">
-                <x-label for="search" :value="__('Nama Kegiatan')" />
+                <x-label for="search" :value="__('Uraian')" />
                 <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
                     type="text" name="search" autofocus />
             </div>
@@ -120,11 +120,8 @@
                             @can('crud usulan')
                                 <td class="px-2 md:px-6">
                                     <div class="flex flex-row items-center space-x-4">
-                                        <button type="button" class="text-xs btn-primary"
-                                            wire:click="$emit('getDetailUsulan', {{ $row->id }})"
-                                            @click="modalDetail = true">detail</button>
                                         <button type="button" class="text-xs btn-secondary"
-                                            wire:click="$emit('getUsulan', {{ $row->id }})"
+                                            wire:click="$emit('getPendapatan', {{ $row->id }})"
                                             @click="modalEdit = true">edit</button>
                                         <button wire:click="alertConfirm({{ $row->id }})" type="button"
                                             class="text-xs btn-danger">hapus</button>

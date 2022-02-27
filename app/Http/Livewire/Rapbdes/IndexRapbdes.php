@@ -26,7 +26,9 @@ class IndexRapbdes extends Component
     public function render()
     {
         return view('livewire.rapbdes.index-rapbdes', [
-            'pendapatans' => Pendapatan::paginate($this->paginate),
+            'pendapatans' => ($this->search === null) ?
+                Pendapatan::where('tahun', $this->tahun)->paginate($this->paginate) :
+                Pendapatan::where('tahun', $this->tahun)->where('uraian', 'like', '%' . $this->search . '%')->paginate($this->paginate),
             'tahuns' => Pendapatan::select('tahun')->groupBy('tahun')->get()
         ]);
     }

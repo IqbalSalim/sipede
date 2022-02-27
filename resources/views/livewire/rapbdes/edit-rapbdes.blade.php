@@ -1,14 +1,14 @@
 <div>
-    <form wire:submit.prevent='store' novalidate>
+    <form wire:submit.prevent='update' novalidate>
         @csrf
-        <div x-show="modal" class="fixed inset-0 z-50 flex justify-center w-full py-4 bg-black bg-opacity-40">
+        <div x-show="modalEdit" class="fixed inset-0 z-50 flex justify-center w-full py-4 bg-black bg-opacity-40">
 
-            <!-- A basic modal dialog with title, body and one button to close -->
+            <!-- A basic modalEdit dialog with title, body and one button to close -->
 
-            <div @click.away="modal = false" x-show="modal" x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-90"
+            <div @click.away="modalEdit = false" x-show="modalEdit"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
                 class="flex flex-col w-8/12 h-auto p-4 mx-2 text-left transition-all duration-500 ease-in-out transform bg-white divide-y-2 divide-gray-300 rounded shadow-xl">
 
 
@@ -103,7 +103,7 @@
                         <button type="submit" class="text-sm btn-primary">
                             {{ __('Submit') }}
                         </button>
-                        <button type="button" @click="modal = false" class="text-sm btn-secondary">
+                        <button type="button" @click="modalEdit = false" class="text-sm btn-secondary">
                             Close
                         </button>
                     </div>
