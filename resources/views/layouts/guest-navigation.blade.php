@@ -37,14 +37,6 @@
                             :active="request()->routeIs('transparansi.rkp')">
                             {{ __('RKP Desa') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('transparansi.rka')"
-                            :active="request()->routeIs('transparansi.rka')">
-                            {{ __('RKA Desa') }}
-                        </x-dropdown-link>
-                        <x-dropdown-link :href="route('transparansi.musrenbang')"
-                            :active="request()->routeIs('transparansi.musrenbang')">
-                            {{ __('Musrenbang Desa') }}
-                        </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
                 <x-nav-link :href="route('warta.warta-kegiatan')" :active="request()->routeIs('warta.*')">
@@ -112,13 +104,6 @@
                     </x-dropdown-link>
                     <x-dropdown-link :href="route('transparansi.rkp')" :active="request()->routeIs('transparansi.rkp')">
                         {{ __('RKP Desa') }}
-                    </x-dropdown-link>
-                    <x-dropdown-link :href="route('transparansi.rka')" :active="request()->routeIs('transparansi.rka')">
-                        {{ __('RKA Desa') }}
-                    </x-dropdown-link>
-                    <x-dropdown-link :href="route('transparansi.musrenbang')"
-                        :active="request()->routeIs('transparansi.musrenbang')">
-                        {{ __('Musrenbang Desa') }}
                     </x-dropdown-link>
                 </x-slot>
             </x-dropdown>

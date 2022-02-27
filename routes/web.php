@@ -70,12 +70,6 @@ Route::group(['prefix' => '/transparansi', 'as' => 'transparansi'], function () 
 
     Route::get('/rkp', GuestRkp::class)->name('.rkp');
     Route::get('/rkp-index', IndexRkp::class)->name('.rkp-index');
-
-    Route::get('rka', GuestRka::class)->name('.rka');
-    Route::get('/rka-index', IndexRka::class)->name('.rka-index');
-
-    Route::get('/musrenbang', GuestMusrenbang::class)->name('.musrenbang');
-    Route::get('/musrenbang-index', IndexMusrenbang::class)->name('.musrenbang-index');
 });
 
 Route::group(['prefix' => '/warta', 'as' => 'warta'], function () {

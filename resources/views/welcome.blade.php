@@ -678,38 +678,7 @@
                     </div>
                 </a>
 
-                <a href="transparansi/rka"
-                    class="grid grid-cols-3 gap-4 p-4 transition duration-300 ease-in-out delay-150 transform rounded-lg shadow-lg lg:gap-2 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-50 bg-gray-50 hover:scale-110">
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="justify-center w-6 h-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div class="font-semibold text-blue-500">RKA Desa</div>
-                    </div>
-                    <div class="col-span-2 place-self-center">
-                        <p class="text-gray-500 capitalize md:text-center">rencana kegiatan dan anggaran desa</p>
-                    </div>
-                </a>
-                <a href="transparansi/musrenbang"
-                    class="grid grid-cols-3 gap-4 p-4 transition duration-300 ease-in-out delay-150 transform rounded-lg shadow-lg lg:gap-2 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-50 bg-gray-50 hover:scale-110">
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="justify-center w-6 h-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div class="font-semibold text-center text-blue-500">Musrenbang Desa</div>
-                    </div>
-                    <div class="items-center col-span-2 place-self-center">
-                        <p class="text-gray-500 capitalize md:text-center">musyawarah perencanaan pembangunan desa</p>
-                    </div>
-                </a>
+
             </div>
         </div>
     </div>

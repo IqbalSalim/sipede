@@ -97,14 +97,6 @@
                                 :active="request()->routeIs('transparansi.rkp-index')">
                                 {{ __('RKP Desa') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('transparansi.rka-index')"
-                                :active="request()->routeIs('transparansi.rka-index')">
-                                {{ __('RKA Desa') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('transparansi.musrenbang-index')"
-                                :active="request()->routeIs('transparansi.musrenbang-index')">
-                                {{ __('Musrenbang Desa') }}
-                            </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                     <x-nav-link :href="route('warta.warta-index')" :active="request()->routeIs('warta.warta-index')">
