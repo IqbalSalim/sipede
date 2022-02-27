@@ -3,6 +3,7 @@
 use App\Http\Controllers\CetakAPB;
 use App\Http\Controllers\CetakRekap;
 use App\Http\Controllers\CetakRkpdesa;
+use App\Http\Controllers\ExportUsulanController;
 use App\Http\Livewire\Apb\Guest;
 use App\Http\Livewire\Apb\IndexApb;
 use App\Http\Livewire\Apb\Show;
@@ -91,6 +92,7 @@ Route::get('/dashboard', IndexDashboard::class)->middleware(['auth'])->name('das
 Route::get('/cetak-rekap', [CetakRekap::class, 'cetakExel'])->name('cetak-rekap');
 Route::get('/cetak-rkpdesa', [CetakRkpdesa::class, 'cetakExcel'])->name('cetak-rkpdesa');
 Route::post('/cetak-apbdesa', [CetakAPB::class, 'cetakExcel'])->name('cetak-apbdesa');
+Route::post('/export-usulan', [ExportUsulanController::class, 'exportUsulan'])->name('export-usulan');
 
 Route::get('/kegiatan', IndexKegiatan::class)->middleware(['auth'])->name('kegiatan');
 

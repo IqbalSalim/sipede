@@ -23,44 +23,59 @@
 
 
 
-        <div class="flex flex-row py-2 space-x-8 border-b-2 border-gray-200">
-            <div class="self-end">
+        <div class="flex flex-row justify-between py-2 border-b-2 border-gray-200">
+            <div>
                 <button class="text-sm btn-primary" @click="modal = true">Tambah Usulan</button>
             </div>
-            <div class="flex flex-row items-end justify-end flex-1 space-x-6">
-                <div>
-                    <x-label for="paginate" :value="__('Item')" />
-                    <select name="paginate" id="paginate" wire:model="paginate"
-                        class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                    </select>
-                </div>
-                <div>
-                    <x-label for="tahun" :value="__('Tahun')" />
-                    <select name="tahun" id="tahun" wire:model="tahun"
-                        class="w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                        @foreach ($tahuns as $item)
-                            <option value="{{ $item->tahun }}">{{ $item->tahun }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div>
-                    <x-label for="bidang" :value="__('Bidang')" />
-                    <select name="bidang" id="bidang" wire:model="bidang"
-                        class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                        <option value="">-- Semua Bidang --</option>
-                        @foreach ($bidangs as $item)
-                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                        @endforeach
-                    </select>
-                </div>
+            <div>
+                <form action="{{ url('export-usulan') }}" method="POST" novalidate>
+                    @csrf
+                    <input type="hidden" name="tahun" value="{{ $tahun }}">
+                    <input type="hidden" name="bidang" value="{{ $bidang }}">
+                    <button type="submit" class="text-sm btn-success">Export Excel</button>
+                </form>
+            </div>
 
-                <div class="md:w-3/12">
-                    <x-label for="search" :value="__('Nama Kegiatan')" />
-                    <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
-                        type="text" name="search" autofocus />
+        </div>
+        <div class="mt-2">
+            <div class="flex flex-row items-end justify-between space-x-6">
+                <div class="flex flex-row space-x-4">
+                    <div>
+                        <x-label for="paginate" :value="__('Item')" />
+                        <select name="paginate" id="paginate" wire:model="paginate"
+                            class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    <div>
+                        <x-label for="tahun" :value="__('Tahun')" />
+                        <select name="tahun" id="tahun" wire:model="tahun"
+                            class="w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            @foreach ($tahuns as $item)
+                                <option value="{{ $item->tahun }}">{{ $item->tahun }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="flex flex-row space-x-4">
+                    <div>
+                        <x-label for="bidang" :value="__('Bidang')" />
+                        <select name="bidang" id="bidang" wire:model="bidang"
+                            class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            <option value="">-- Semua Bidang --</option>
+                            @foreach ($bidangs as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="md:w-6/12">
+                        <x-label for="search" :value="__('Nama Kegiatan')" />
+                        <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
+                            type="text" name="search" autofocus />
+                    </div>
                 </div>
             </div>
         </div>
