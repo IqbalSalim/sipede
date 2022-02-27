@@ -18,6 +18,6 @@ class Pendapatan extends Model
 
     public function kategoriPendapatan()
     {
-        return $this->belongsTo(KategoriPendapatan::class);
+        return $this->belongsTo(KategoriPendapatan::class, 'kategori_id');
     }
 }
