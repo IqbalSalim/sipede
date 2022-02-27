@@ -31,7 +31,6 @@
                 <form action="{{ url('export-usulan') }}" method="POST" novalidate>
                     @csrf
                     <input type="hidden" name="tahun" value="{{ $tahun }}">
-                    <input type="hidden" name="bidang" value="{{ $bidang }}">
                     <button type="submit" class="text-sm btn-success">Export Excel</button>
                 </form>
             </div>

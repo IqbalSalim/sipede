@@ -18,8 +18,13 @@
 
 
         <div class="flex flex-row py-2 space-x-8 border-b-2 border-gray-200">
-            <div class="self-end">
-                <a href="{{ route('cetak-rkpdesa') }}" class="text-sm btn-success">Cetak RKP Desa</a>
+            <div>
+                <form action="{{ url('export-rkpdesa') }}" method="POST" novalidate>
+                    @csrf
+                    <input type="hidden" name="tahun" value="{{ $tahun }}">
+                    <input type="hidden" name="bidang" value="{{ $bidang }}">
+                    <button type="submit" class="text-sm btn-success">Export Excel</button>
+                </form>
             </div>
             <div class="flex flex-row items-end justify-end flex-1 space-x-6">
                 <div>

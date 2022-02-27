@@ -18,9 +18,7 @@ class ExportUsulanController extends Controller
 
         define('SPECIAL_ARRAY_TYPE', CellSetterArrayValueSpecial::class);
         $rekap = [];
-        // dd($rekap);
-        $query = Usulan::where('tahun', $request->tahun)->cariBidang($request->bidang)->get();
-        // dd($query);
+        $query = Usulan::where('tahun', $request->tahun)->get();
         for ($i = 1; $i <= 5; $i++) {
             $no = 1;
             $rekap['no_' . $i] = [];
@@ -37,8 +35,8 @@ class ExportUsulanController extends Controller
                     array_push($rekap['sdgs_' . $i], $row->sdgs);
                     array_push($rekap['volume_' . $i], $row->volume);
                     array_push($rekap['satuan_' . $i], $row->satuan);
+                    $no++;
                 }
-                $no++;
             }
         }
 
