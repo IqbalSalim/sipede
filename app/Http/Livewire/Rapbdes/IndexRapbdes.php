@@ -11,12 +11,12 @@ class IndexRapbdes extends Component
     use WithPagination;
 
 
-    public $paginate = 10, $search;
+    public $paginate = 10, $search, $deleteId;
 
     public $queryString = ['search'];
     public $tahun;
 
-    protected $listeners = ['render'];
+    protected $listeners = ['render', 'delete'];
 
     public function mount()
     {
@@ -31,5 +31,22 @@ class IndexRapbdes extends Component
                 Pendapatan::where('tahun', $this->tahun)->where('uraian', 'like', '%' . $this->search . '%')->paginate($this->paginate),
             'tahuns' => Pendapatan::select('tahun')->groupBy('tahun')->get()
         ]);
+    }
+
+    public function alertConfirm($id)
+    {
+        $this->deleteId = $id;
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'type' => 'warning',
+            'message' => 'Apakah Anda Yakin?',
+            'text' => 'Jika dihapus, Anda tidak akan dapat mengembalikan data ini!'
+        ]);
+    }
+    public function delete()
+    {
+        if ($this->deleteId) {
+            $usulan = Pendapatan::find($this->deleteId);
+            $usulan->delete();
+        }
     }
 }
