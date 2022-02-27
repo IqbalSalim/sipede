@@ -22,11 +22,13 @@
                 <form action="{{ url('export-rkpdesa') }}" method="POST" novalidate>
                     @csrf
                     <input type="hidden" name="tahun" value="{{ $tahun }}">
-                    <input type="hidden" name="bidang" value="{{ $bidang }}">
                     <button type="submit" class="text-sm btn-success">Export Excel</button>
                 </form>
             </div>
-            <div class="flex flex-row items-end justify-end flex-1 space-x-6">
+
+        </div>
+        <div class="flex flex-row items-end justify-between mt-2">
+            <div class="flex flex-row space-x-4">
                 <div>
                     <x-label for="paginate" :value="__('Item')" />
                     <select name="paginate" id="paginate" wire:model="paginate"
@@ -45,6 +47,8 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
+            <div class="flex flex-row space-x-4">
                 <div>
                     <x-label for="bidang" :value="__('Bidang')" />
                     <select name="bidang" id="bidang" wire:model="bidang"
@@ -56,7 +60,7 @@
                     </select>
                 </div>
 
-                <div class="md:w-3/12">
+                <div class="md:w-6/12">
                     <x-label for="search" :value="__('Nama Kegiatan')" />
                     <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
                         type="text" name="search" autofocus />
