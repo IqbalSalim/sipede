@@ -21,12 +21,14 @@
 
 
 
-        <div class="flex flex-row py-2 space-x-8 border-b-2 border-gray-200">
-            <div class="self-end">
-                <button class="text-sm btn-primary" @click="modal = true">Tambah Pendapatan</button>
-            </div>
-            <div class="flex flex-row items-end justify-end flex-1 space-x-6">
-
+        <div class="flex flex-row justify-between py-2 space-x-8 border-b-2 border-gray-200">
+            <button class="text-sm btn-primary" @click="modal = true">Tambah Pendapatan</button>
+            <div>
+                <form action="{{ url('export-rapbdes') }}" method="POST" novalidate>
+                    @csrf
+                    <input type="hidden" name="tahun" value="{{ $tahun }}">
+                    <button type="submit" class="text-sm btn-success">Export Excel</button>
+                </form>
             </div>
         </div>
         <div class="flex flex-row items-center justify-between py-2">

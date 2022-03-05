@@ -76,7 +76,7 @@
                         </span>
                     </div>
                     <div class="mt-4">
-                        <x-label for="anggaran" :value="__('Kode Rekening')" />
+                        <x-label for="anggaran" :value="__('Anggaran')" />
 
                         <x-input wire:model.defer="anggaran" id="anggaran" class="block w-full mt-1 text-sm"
                             type="number" min="1" name="anggaran" autofocus />

@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-2 py-4 text-sm text-left md:px-6 text-defaul">
+                                <td class="px-2 py-4 text-sm text-left md:px-6 text-default">
                                     {{ $user->created_at }}</td>
                                 <td class="px-2 md:px-6">
                                     @if (!empty($user->roles[0]->name))
