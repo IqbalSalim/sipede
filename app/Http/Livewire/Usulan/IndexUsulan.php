@@ -29,7 +29,7 @@ class IndexUsulan extends Component
 
         $usulan = Usulan::all();
         foreach ($usulan as $row) {
-            $this->status[$row->id] = $row->status->value;
+            $this->status[$row->id] = $row->status;
         }
     }
 
@@ -70,12 +70,12 @@ class IndexUsulan extends Component
                 'message' => 'Keterangan Usulan Yang Tidak Sesuai',
             ]);
             $this->statusTemp = $this->status[$id];
-            $this->status[$id] = $this->usulan->status->value;
+            $this->status[$id] = $this->usulan->status;
         } elseif ($this->status[$id] == 'sesuai') {
             $this->emit('getUsulanStatus', $id, 'sesuai');
             $this->dispatchBrowserEvent('open-modal-status');
             $this->statusTemp = $this->status[$id];
-            $this->status[$id] = $this->usulan->status->value;
+            $this->status[$id] = $this->usulan->status;
         } else {
             $this->usulan->update([
                 'status' => $this->status[$id],
@@ -97,7 +97,7 @@ class IndexUsulan extends Component
             'keterangan' => $keterangan,
         ]);
 
-        $this->status[$this->usulan->id] = $this->usulan->status->value;
+        $this->status[$this->usulan->id] = $this->usulan->status;
 
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
@@ -111,7 +111,7 @@ class IndexUsulan extends Component
         $data['status'] = $this->statusTemp;
         $this->usulan->update($data);
 
-        $this->status[$this->usulan->id] = $this->usulan->status->value;
+        $this->status[$this->usulan->id] = $this->usulan->status;
         $this->dispatchBrowserEvent('close-modal-status');
 
         $this->dispatchBrowserEvent('swal:modal', [

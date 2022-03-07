@@ -26,10 +26,6 @@ class Usulan extends Model
         'keterangan',
     ];
 
-    protected $casts = [
-        'status' => UsulanStatus::class,
-    ];
-
     public function kegiatan()
     {
         return $this->belongsTo(Kegiatan::class);

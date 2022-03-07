@@ -17,7 +17,7 @@ class CreateUsulansTable extends Migration
             $table->id();
             $table->foreignId('kegiatan_id')->constrained('kegiatans')->onUpdate('cascade')->onDelete('cascade');
             $table->year('tahun');
-            $table->string('status')->default('verifikasi');
+            $table->enum('status', ['verifikasi', 'sesuai', 'tidak sesuai'])->default('verifikasi');
             $table->string('lokasi')->nullable();
             $table->string('sdgs', 50)->nullable();
             $table->integer('volume')->nullable();

@@ -139,11 +139,11 @@
                             @cannot('crud usulan')
                                 <td @class([
                                     'px-4 py-3 text-xs font-medium capitalize md:px-6',
-                                    'text-warning' => $row->status->value == 'verifikasi',
-                                    'text-success' => $row->status->value == 'sesuai',
-                                    'text-danger' => $row->status->value == 'tidak sesuai',
+                                    'text-warning' => $row->status == 'verifikasi',
+                                    'text-success' => $row->status == 'sesuai',
+                                    'text-danger' => $row->status == 'tidak sesuai',
                                 ]) class="">
-                                    {{ $row->status->value }}
+                                    {{ $row->status }}
                                 </td>
                             @endcannot
                             @can('crud usulan')
@@ -151,9 +151,9 @@
                                     <select wire:model.defer="status.{{ $row->id }}"
                                         wire:change.defer='changeStatus({{ $row->id }})' @class([
                                             'block w-full mt-1 text-xs capitalize border-gray-300 rounded-md shadow-sm appearance-none focus:border-blue-300  focus:ring focus:ring-blue-200 focus:ring-opacity-50',
-                                            'text-warning font-medium' => $row->status->value == 'verifikasi',
-                                            'text-success font-medium' => $row->status->value == 'sesuai',
-                                            'text-danger font-medium' => $row->status->value == 'tidak sesuai',
+                                            'text-warning font-medium' => $row->status == 'verifikasi',
+                                            'text-success font-medium' => $row->status == 'sesuai',
+                                            'text-danger font-medium' => $row->status == 'tidak sesuai',
                                         ])>
                                         <option value="verifikasi" class="font-medium text-warning">Verifikasi
                                         </option>

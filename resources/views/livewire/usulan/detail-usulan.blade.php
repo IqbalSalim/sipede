@@ -52,7 +52,7 @@
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
                                     {{ $usulan->tahun }}</td>
                             </tr>
-                            @if ($usulan->status->value == 'sesuai')
+                            @if ($usulan->status == 'sesuai')
                                 <tr>
                                     <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Mendukung SDGs Desa Ke</th>
                         <td class="px-4 py-3 text-sm text-gray-500  md:px-6 whitespace-nowrap">
@@ -68,13 +68,13 @@
                                 <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Status</th>
                         <td  @class([
                             'px-4 py-3 text-sm capitalize font-medium  md:px-6 whitespace-nowrap',
-                            'text-warning' => $usulan->status->value == 'verifikasi',
-                            'text-success' => $usulan->status->value == 'sesuai',
-                            'text-danger' => $usulan->status->value == 'tidak sesuai',
+                            'text-warning' => $usulan->status == 'verifikasi',
+                            'text-success' => $usulan->status == 'sesuai',
+                            'text-danger' => $usulan->status == 'tidak sesuai',
                         ])>
-                                            {{ $usulan->status->value }}</td>
+                                            {{ $usulan->status }}</td>
                                     </tr>
-                            @if ($usulan->status->value == 'tidak sesuai')
+                             @if ($usulan->status == 'tidak sesuai')
                             <tr>
                                 <th class="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50 md:px-6"">Keterangan</th>
                                          <td class="px-4 py-3 text-sm  text-danger md:px-6 whitespace-nowrap">
