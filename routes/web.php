@@ -21,6 +21,7 @@ use App\Http\Livewire\Profil\EditSejarahDesa;
 use App\Http\Livewire\Profil\EditVisiMisi;
 use App\Http\Livewire\Profil\IndexProfil;
 use App\Http\Livewire\Rapbdes\IndexRapbdes;
+use App\Http\Livewire\Realisasi\IndexRealisasi;
 use App\Http\Livewire\Rka\GuestRka;
 use App\Http\Livewire\Rka\IndexRka;
 use App\Http\Livewire\Rkp\GuestRkp;
@@ -73,6 +74,7 @@ Route::group(['prefix' => '/transparansi', 'as' => 'transparansi'], function () 
 
     Route::get('/rkp', GuestRkp::class)->name('.rkp');
     Route::get('/rkp-index', IndexRkp::class)->name('.rkp-index');
+    Route::get('/realisasi', IndexRealisasi::class)->name('.realisasi');
 });
 
 Route::group(['prefix' => '/warta', 'as' => 'warta'], function () {
@@ -114,6 +116,7 @@ Route::group(['prefix' => '/perencanaan', 'as' => 'perencanaan', 'middleware' =>
     Route::get('/rapb-desa', IndexRapbdes::class)->name('.rapb-desa');
     Route::get('/apb-desa', IndexApbdesa::class)->name('.apb-desa');
 });
+
 
 
 require __DIR__ . '/auth.php';

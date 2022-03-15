@@ -89,6 +89,10 @@
                         </x-slot>
 
                         <x-slot name="content">
+                            <x-dropdown-link :href="route('transparansi.realisasi')"
+                                :active="request()->routeIs('transparansi.realisasi')">
+                                {{ __('Realisasi') }}
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('transparansi.apb-index')"
                                 :active="request()->routeIs('transparansi.apb-index')">
                                 {{ __('APB Desa') }}
