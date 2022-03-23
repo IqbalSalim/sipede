@@ -38,8 +38,8 @@ class IndexUsulan extends Component
     {
         return view('livewire.usulan.index-usulan', [
             'kegiatans' => ($this->search === null) ?
-                Usulan::where('tahun', $this->tahun)->cariBidang($this->bidang)->paginate($this->paginate) :
-                Usulan::where('tahun', $this->tahun)->cariBidang($this->bidang)->cariKegiatan($this->search)->paginate($this->paginate),
+                Usulan::where('tahun', $this->tahun)->cariBidang($this->bidang)->latest()->paginate($this->paginate) :
+                Usulan::where('tahun', $this->tahun)->cariBidang($this->bidang)->cariKegiatan($this->search)->latest()->paginate($this->paginate),
 
             'tahuns' => Usulan::select('tahun')->groupBy('tahun')->get(),
         ]);

@@ -30,8 +30,8 @@ class IndexRkpdesa extends Component
     {
         return view('livewire.rkpdesa.index-rkpdesa', [
             'kegiatans' => ($this->search === null) ?
-                Usulan::where('tahun', $this->tahun)->where('status', 'sesuai')->cariBidang($this->bidang)->paginate($this->paginate) :
-                Usulan::where('tahun', $this->tahun)->where('status', 'sesuai')->cariBidang($this->bidang)->cariKegiatan($this->search)->paginate($this->paginate),
+                Usulan::where('tahun', $this->tahun)->where('status', 'sesuai')->cariBidang($this->bidang)->latest()->paginate($this->paginate) :
+                Usulan::where('tahun', $this->tahun)->where('status', 'sesuai')->cariBidang($this->bidang)->cariKegiatan($this->search)->latest()->paginate($this->paginate),
             'tahuns' => Usulan::select('tahun')->groupBy('tahun')->get(),
         ]);
     }

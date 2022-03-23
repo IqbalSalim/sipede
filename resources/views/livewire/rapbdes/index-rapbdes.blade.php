@@ -23,13 +23,15 @@
 
         <div class="flex flex-row justify-between py-2 space-x-8 border-b-2 border-gray-200">
             <button class="text-sm btn-primary" @click="modal = true">Tambah Pendapatan</button>
-            <div>
-                <form action="{{ url('export-rapbdes') }}" method="POST" novalidate>
-                    @csrf
-                    <input type="hidden" name="tahun" value="{{ $tahun }}">
-                    <button type="submit" class="text-sm btn-success">Export Excel</button>
-                </form>
-            </div>
+            @if (count($pendapatans) !== 0)
+                <div>
+                    <form action="{{ url('export-rapbdes') }}" method="POST" novalidate>
+                        @csrf
+                        <input type="hidden" name="tahun" value="{{ $tahun }}">
+                        <button type="submit" class="text-sm btn-success">Export Excel</button>
+                    </form>
+                </div>
+            @endif
         </div>
         <div class="flex flex-row items-center justify-between py-2">
             <div class="flex flex-row space-x-4">

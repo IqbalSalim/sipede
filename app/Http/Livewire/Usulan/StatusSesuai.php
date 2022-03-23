@@ -39,5 +39,6 @@ class StatusSesuai extends Component
             'satuan' => 'required|string',
         ]);
         $this->emit('updateStatusSesuai', $dataValid);
+        $this->resetForm();
     }
 }
