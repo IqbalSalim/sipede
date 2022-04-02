@@ -59,7 +59,13 @@ class UserSeeder extends Seeder
 
         $permission = Permission::create(['name' => 'crud usulan']);
         $role = Role::where('name', 'sekretaris')->first();
-        $permission = Permission::where('name', 'crud usulan')->first();
-        $permission->assignRole($role);
+        $role->givePermissionTo($permission);
+        // $permission = Permission::where('name', 'crud usulan')->first();
+        // $permission->assignRole($role);
+
+        $role = Role::where('name', 'admin')->first();
+        $role->givePermissionTo($permission);
+        // $permission = Permission::where('name', 'crud usulan')->first();
+        // $permission->assignRole($role);
     }
 }

@@ -3,15 +3,18 @@
 namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Apb;
+use App\Models\Kegiatan;
 use App\Models\Musrenbang;
 use App\Models\Rka;
 use App\Models\Rkp;
 use Livewire\Component;
 
+
 class IndexDashboard extends Component
 {
     public $total_rka, $total_rkp, $total_apb, $total_musrenbang;
     public $apbs, $rkps, $rkas, $musrenbangs;
+
 
     public function render()
     {
