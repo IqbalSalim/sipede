@@ -16,7 +16,7 @@ class CreateApbsTable extends Migration
         Schema::create('apbs', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('path');
+            $table->string('filename');
             $table->timestamps();
         });
     }
