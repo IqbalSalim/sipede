@@ -1,10 +1,9 @@
 <div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
-    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-cloak
-        x-data="{ modal: false, modalEdit: false, modalDetail: false, modalStatus: false, open1:true, open2:false, open3:false, open4:false, open5:false, }"
+    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-cloak x-data="{ modal: false, modalEdit: false, modalDetail: false, modalStatus: false, open1: true, open2: false, open3: false, open4: false, open5: false, }"
         x-on:close-modal.window="modal = false" x-on:close-modal-edit.window="modalEdit = false">
         <x-slot name="header">
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                {{ __('Usulan Kegiatan') }}
+                {{ __('Rancangan APB Desa') }}
             </h2>
             <div class="flex flex-row space-x-1 text-sm text-gray-400">
                 <div class="hover:text-primary"><a href="/dashboard">Dashboard</a></div>
@@ -27,7 +26,7 @@
                 <div>
                     <form action="{{ url('export-rapbdes') }}" method="POST" novalidate>
                         @csrf
-                        <input type="hidden" name="tahun" value="{{ $tahun }}">
+                        <input type="hidden" name="tahun" wire:model='tahun'>
                         <button type="submit" class="text-sm btn-success">Export Excel</button>
                     </form>
                 </div>

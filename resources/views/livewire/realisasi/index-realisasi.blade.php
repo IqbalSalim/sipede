@@ -1,6 +1,5 @@
 <div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
-    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-cloak
-        x-data="{ modal: false, modalEdit: false, modalDetail: false, modalStatus: false, open1:true, open2:false, open3:false, open4:false, open5:false, }"
+    <div class="px-4 py-2 bg-white rounded-lg shadow-lg" x-cloak x-data="{ modal: false, modalEdit: false, modalDetail: false, modalStatus: false, open1: true, open2: false, open3: false, open4: false, open5: false, }"
         x-on:close-modal.window="modal = false" x-on:close-modal-edit.window="modalEdit = false"
         x-on:open-modal-status.window="modalStatus = true" x-on:close-modal-status.window="modalStatus = false">
         <x-slot name="header">
@@ -19,7 +18,7 @@
 
 
 
-        <div class="flex flex-row justify-between py-2 border-b-2 border-gray-200">
+        {{-- <div class="flex flex-row justify-between py-2 border-b-2 border-gray-200">
 
             <div>
                 <form action="{{ url('export-usulan') }}" method="POST" novalidate>
@@ -29,7 +28,7 @@
                 </form>
             </div>
 
-        </div>
+        </div> --}}
         <div class="flex flex-row items-end justify-between mt-2">
             <table class="text-sm">
                 <tr>

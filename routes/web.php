@@ -3,6 +3,7 @@
 use App\Http\Controllers\CetakAPB;
 use App\Http\Controllers\CetakRekap;
 use App\Http\Controllers\CetakRkpdesa;
+use App\Http\Controllers\ExportApbdesController;
 use App\Http\Controllers\ExportRapbdesController;
 use App\Http\Controllers\ExportRkpdesaController;
 use App\Http\Controllers\ExportUsulanController;
@@ -94,10 +95,10 @@ Route::get('/dashboard', IndexDashboard::class)->middleware(['auth'])->name('das
 
 
 Route::get('/cetak-rkpdesa', [CetakRkpdesa::class, 'cetakExcel'])->name('cetak-rkpdesa');
-Route::post('/cetak-apbdesa', [CetakAPB::class, 'cetakExcel'])->name('cetak-apbdesa');
 Route::post('/export-usulan', [ExportUsulanController::class, 'exportUsulan'])->name('export-usulan');
 Route::post('/export-rkpdesa', [ExportRkpdesaController::class, 'exportRkpdesa'])->name('export-rkpdesa');
 Route::post('/export-rapbdes', [ExportRapbdesController::class, 'exportRapbdes'])->name('export-rapbdes');
+Route::post('/export-apbdes', [ExportApbdesController::class, 'exportApbdes'])->name('export-apbdes');
 
 Route::get('/kegiatan', IndexKegiatan::class)->middleware(['auth'])->name('kegiatan');
 

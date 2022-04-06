@@ -15,17 +15,14 @@ use App\Models\Subbidang;
 use App\Models\Usulan;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class ExportRapbdesController extends Controller
+class ExportApbdesController extends Controller
 {
-    public function exportRapbdes(Request $request)
+    public function exportApbdes(Request $request)
     {
-
-
-
         define('SPECIAL_ARRAY_TYPE', CellSetterArrayValue::class);
 
-        $templateFile = 'templates/template_rapbdes.xlsx';
-        $fileName = 'exported_RAPB_Desa.xlsx';
+        $templateFile = 'templates/template_apbdes.xlsx';
+        $fileName = 'exported_APB_Desa.xlsx';
 
         $spreadsheet = IOFactory::load($templateFile);
 
@@ -38,7 +35,6 @@ class ExportRapbdesController extends Controller
             '{pendapatan}' => $pendapatan,
             '{belanja}' => $belanja,
         ]);
-
 
         // Sheet 2
         $rapbdes = [];
@@ -72,12 +68,8 @@ class ExportRapbdesController extends Controller
             $rapbdes['sumber_' . $i] = new ExcelParam(CellSetterArrayValueSpecial::class, $rapbdes['sumber_' . $i]);
         }
 
-
-
         $que = Usulan::with('kegiatan')->where('tahun', $request->tahun)->where('status', 'sesuai')
             ->orderBy(Kegiatan::with('subbidang')->select('kd_rek')->whereColumn('kegiatans.id', 'usulans.kegiatan_id')->orderBy(Subbidang::select('kd_rek')->whereColumn('subbidangs.id', 'kegiatans.subbidang_id')))->get();
-
-
 
         for ($i = 1; $i <= 5; $i++) {
 
@@ -110,10 +102,13 @@ class ExportRapbdesController extends Controller
         }
 
 
-
         $shetArr2 = $spreadsheet->setActiveSheetIndex(1)->toArray();
         $sheet2 = $spreadsheet->setActiveSheetIndex(1);
         PhpExcelTemplator::renderWorksheet($sheet2, $shetArr2, $rapbdes);
+
+
+
+        // dd($sheet2);
 
 
         PhpExcelTemplator::outputSpreadsheetToFile($spreadsheet, $fileName);
