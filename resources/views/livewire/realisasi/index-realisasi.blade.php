@@ -73,7 +73,7 @@
                         <option value="15">15</option>
                     </select>
                 </div>
-                <div>
+                <div class="w-32">
                     <x-label for="tahun" :value="__('Tahun')" />
                     <select name="tahun" id="tahun" wire:model="tahun"
                         class="w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
