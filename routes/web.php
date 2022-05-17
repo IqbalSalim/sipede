@@ -22,6 +22,7 @@ use App\Http\Livewire\Profil\EditSejarahDesa;
 use App\Http\Livewire\Profil\EditVisiMisi;
 use App\Http\Livewire\Profil\IndexProfil;
 use App\Http\Livewire\Rapbdes\IndexRapbdes;
+use App\Http\Livewire\Realisasi\GuestRealisasi;
 use App\Http\Livewire\Realisasi\IndexRealisasi;
 use App\Http\Livewire\Rka\GuestRka;
 use App\Http\Livewire\Rka\IndexRka;
@@ -71,13 +72,13 @@ Route::get('/', function () {
 
 Route::group(['prefix' => '/transparansi', 'as' => 'transparansi'], function () {
 
+    Route::get('/guest-realisasi', GuestRealisasi::class)->name('.guest-realisasi');
     Route::get('/apb', Guest::class)->name('.apb');
     Route::get('/apb-index', IndexApb::class)->name('.apb-index');
 
     Route::get('/rkp', GuestRkp::class)->name('.rkp');
     Route::get('/rkp-index', IndexRkp::class)->name('.rkp-index');
     Route::get('/realisasi', IndexRealisasi::class)->name('.realisasi');
-    Route::get('/status-kegiatan', IndexStatuskegiatan::class)->name('.status-kegiatan');
 });
 
 Route::group(['prefix' => '/warta', 'as' => 'warta'], function () {

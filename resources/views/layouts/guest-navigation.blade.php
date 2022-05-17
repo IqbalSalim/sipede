@@ -29,12 +29,13 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('transparansi.apb')"
-                            :active="request()->routeIs('transparansi.apb')">
+                        <x-dropdown-link :href="route('transparansi.guest-realisasi')" :active="request()->routeIs('transparansi.guest-realisasi')">
+                            {{ __('Realisasi') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('transparansi.apb')" :active="request()->routeIs('transparansi.apb')">
                             {{ __('APB Desa') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('transparansi.rkp')"
-                            :active="request()->routeIs('transparansi.rkp')">
+                        <x-dropdown-link :href="route('transparansi.rkp')" :active="request()->routeIs('transparansi.rkp')">
                             {{ __('RKP Desa') }}
                         </x-dropdown-link>
                     </x-slot>
@@ -72,9 +73,9 @@
             <button @click="open = ! open"
                 class="inline-flex items-center justify-center p-2 text-blue-800 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                 <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
+                    <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
+                    <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -83,7 +84,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                 {{ __('Beranda') }}

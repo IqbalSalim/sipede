@@ -176,8 +176,7 @@
                         <div class="mt-2">
                             <button
                                 wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'belum terlaksana')"
-                                class="text-sm btn-warning">Ubah Status Kegiatan Menjadi Belum Terlaksana
-                                Terlaksana</button>
+                                class="text-sm btn-warning">Ubah Status Kegiatan Menjadi Belum Terlaksana</button>
                         </div>
                     @endif
                 @endif
