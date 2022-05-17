@@ -24,6 +24,7 @@ class Usulan extends Model
         'pola',
         'rencana',
         'keterangan',
+        'status_kegiatan',
     ];
 
     public function kegiatan()

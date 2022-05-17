@@ -27,8 +27,7 @@
                             </x-nav-link>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('master.kegiatan')"
-                                :active="request()->routeIs('master.kegiatan')">
+                            <x-dropdown-link :href="route('master.kegiatan')" :active="request()->routeIs('master.kegiatan')">
                                 {{ __('Kegiatan') }}
                             </x-dropdown-link>
                             @hasrole('admin')
@@ -36,20 +35,16 @@
                                     {{ __('User') }}
                                 </x-dropdown-link>
                             @endhasrole
-                            <x-dropdown-link :href="route('master.visi-misi')"
-                                :active="request()->routeIs('master.visi-misi')">
+                            <x-dropdown-link :href="route('master.visi-misi')" :active="request()->routeIs('master.visi-misi')">
                                 {{ __('Visi Misi') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('master.sejarah-desa')"
-                                :active="request()->routeIs('master.sejarah-desa')">
+                            <x-dropdown-link :href="route('master.sejarah-desa')" :active="request()->routeIs('master.sejarah-desa')">
                                 {{ __('Sejarah Desa') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('master.gambaran-umum')"
-                                :active="request()->routeIs('master.gambaran-umum')">
+                            <x-dropdown-link :href="route('master.gambaran-umum')" :active="request()->routeIs('master.gambaran-umum')">
                                 {{ __('Gambaran Umum') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('master.perangkat-desa')"
-                                :active="request()->routeIs('master.perangkat-desa')">
+                            <x-dropdown-link :href="route('master.perangkat-desa')" :active="request()->routeIs('master.perangkat-desa')">
                                 {{ __('Perangkat Desa') }}
                             </x-dropdown-link>
                         </x-slot>
@@ -62,20 +57,16 @@
                             </x-nav-link>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('perencanaan.usulan')"
-                                :active="request()->routeIs('perencanaan.usulan')">
+                            <x-dropdown-link :href="route('perencanaan.usulan')" :active="request()->routeIs('perencanaan.usulan')">
                                 {{ __('Usulan') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.rkp-desa')"
-                                :active="request()->routeIs('perencanaan.rkp-desa')">
+                            <x-dropdown-link :href="route('perencanaan.rkp-desa')" :active="request()->routeIs('perencanaan.rkp-desa')">
                                 {{ __('RKP Desa') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.rapb-desa')"
-                                :active="request()->routeIs('perencanaan.rapb-desa')">
+                            <x-dropdown-link :href="route('perencanaan.rapb-desa')" :active="request()->routeIs('perencanaan.rapb-desa')">
                                 {{ __('RAPB Desa') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.apb-desa')"
-                                :active="request()->routeIs('perencanaan.apb-desa')">
+                            <x-dropdown-link :href="route('perencanaan.apb-desa')" :active="request()->routeIs('perencanaan.apb-desa')">
                                 {{ __('APB Desa') }}
                             </x-dropdown-link>
                         </x-slot>
@@ -89,17 +80,17 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('transparansi.realisasi')"
-                                :active="request()->routeIs('transparansi.realisasi')">
+                            <x-dropdown-link :href="route('transparansi.realisasi')" :active="request()->routeIs('transparansi.realisasi')">
                                 {{ __('Realisasi') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('transparansi.apb-index')"
-                                :active="request()->routeIs('transparansi.apb-index')">
+                            <x-dropdown-link :href="route('transparansi.apb-index')" :active="request()->routeIs('transparansi.apb-index')">
                                 {{ __('APB Desa') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('transparansi.rkp-index')"
-                                :active="request()->routeIs('transparansi.rkp-index')">
+                            <x-dropdown-link :href="route('transparansi.rkp-index')" :active="request()->routeIs('transparansi.rkp-index')">
                                 {{ __('RKP Desa') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('transparansi.status-kegiatan')" :active="request()->routeIs('transparansi.status-kegiatan')">
+                                {{ __('Status Kegiatan') }}
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
@@ -147,10 +138,10 @@
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
+                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
+                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>

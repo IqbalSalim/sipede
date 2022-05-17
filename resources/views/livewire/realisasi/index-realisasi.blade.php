@@ -165,6 +165,23 @@
                 </tbody>
             </table>
             {{-- {{ $kegiatans->links() }} --}}
+            <div class="flex flex-col items-center my-2">
+                @if (count($kegiatans) != 0)
+                    @if ($kegiatans[0]->usulan->status_kegiatan != 'terlaksana')
+                        <div class="mt-2">
+                            <button wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'terlaksana')"
+                                class="text-sm btn-success">Ubah Status Kegiatan Menjadi Terlaksana</button>
+                        </div>
+                    @else
+                        <div class="mt-2">
+                            <button
+                                wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'belum terlaksana')"
+                                class="text-sm btn-warning">Ubah Status Kegiatan Menjadi Belum Terlaksana
+                                Terlaksana</button>
+                        </div>
+                    @endif
+                @endif
+            </div>
         </div>
 
 

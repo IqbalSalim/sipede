@@ -28,6 +28,7 @@ use App\Http\Livewire\Rka\IndexRka;
 use App\Http\Livewire\Rkp\GuestRkp;
 use App\Http\Livewire\Rkp\IndexRkp;
 use App\Http\Livewire\Rkpdesa\IndexRkpdesa;
+use App\Http\Livewire\Statuskegiatan\IndexStatuskegiatan;
 use App\Http\Livewire\Tentang\GuestTentang;
 use App\Http\Livewire\User\IndexUser;
 use App\Http\Livewire\Usulan\IndexUsulan;
@@ -76,6 +77,7 @@ Route::group(['prefix' => '/transparansi', 'as' => 'transparansi'], function () 
     Route::get('/rkp', GuestRkp::class)->name('.rkp');
     Route::get('/rkp-index', IndexRkp::class)->name('.rkp-index');
     Route::get('/realisasi', IndexRealisasi::class)->name('.realisasi');
+    Route::get('/status-kegiatan', IndexStatuskegiatan::class)->name('.status-kegiatan');
 });
 
 Route::group(['prefix' => '/warta', 'as' => 'warta'], function () {

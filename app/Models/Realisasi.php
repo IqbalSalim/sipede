@@ -14,4 +14,9 @@ class Realisasi extends Model
         'uraian',
         'harga'
     ];
+
+    public function usulan()
+    {
+        return $this->belongsTo(Usulan::class, 'usulan_id');
+    }
 }

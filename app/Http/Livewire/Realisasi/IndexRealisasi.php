@@ -59,4 +59,20 @@ class IndexRealisasi extends Component
             $realisasi->delete();
         }
     }
+
+    public function updateStatusKegiatan($id, $value)
+    {
+        $kegiatan = Usulan::where('id', $id)->first();
+        $kegiatan->update(
+            [
+                'status_kegiatan' => $value,
+            ]
+        );
+
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'success',
+            'message' => 'Status Kegiatan Berhasil Diubah!',
+            'text' => 'ini telah disimpan di tabel Kegiatan.'
+        ]);
+    }
 }

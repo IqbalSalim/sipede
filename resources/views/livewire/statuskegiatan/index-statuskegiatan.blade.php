@@ -3,12 +3,12 @@
     <div class="px-4 py-2 bg-white rounded-lg shadow-lg">
         <x-slot name="header">
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                {{ __('RKP Desa') }}
+                {{ __('Status Kegiatan') }}
             </h2>
             <div class="flex flex-row space-x-1 text-sm text-gray-400">
                 <div class="hover:text-primary"><a href="/dashboard">Dashboard</a></div>
                 <div>-</div>
-                <div>RKP Desa</div>
+                <div>Status Kegiatan</div>
             </div>
         </x-slot>
 
@@ -17,16 +17,7 @@
 
 
 
-        <div class="flex flex-row py-2 space-x-8 border-b-2 border-gray-200">
-            <div>
-                <form action="{{ url('export-rkpdesa') }}" method="POST" novalidate>
-                    @csrf
-                    <input type="hidden" name="tahun" value="{{ $tahun }}">
-                    <button type="submit" class="text-sm btn-success">Export Excel</button>
-                </form>
-            </div>
 
-        </div>
         <div class="flex flex-row items-end justify-between mt-2">
             <div class="flex flex-row space-x-4">
                 <div>
@@ -69,7 +60,7 @@
         </div>
 
         <div class="w-full overflow-x-auto md:overflow-hidden">
-            <table class="min-w-full mt-2 divide-y divide-gray-200 table-auto">
+            {{-- <table class="min-w-full mt-2 divide-y divide-gray-200 table-auto">
                 <thead class="bg-gray-50">
                     <tr class="">
                         <th scope="col"
@@ -149,8 +140,8 @@
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
-            {{ $kegiatans->links() }}
+            </table> --}}
+            {{-- {{ $kegiatans->links() }} --}}
         </div>
     </div>
 </div>
