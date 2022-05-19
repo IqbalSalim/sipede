@@ -27,7 +27,7 @@
 
 </head>
 
-<body x-data="{shown:false, open: false}" class="bg-gray-100">
+<body x-data="{ shown: false, open: false }" class="bg-gray-100">
 
     @include('layouts.guest-navigation')
     <div>
