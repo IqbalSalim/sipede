@@ -24,6 +24,7 @@ class ExportRkpdesaController extends Controller
             $rkp['c_' . $i] = [];
             $rkp['no_' . $i] = [];
             $rkp['kegiatan_' . $i] = [];
+            $rkp['sdgs_' . $i] = [];
             $rkp['lokasi_' . $i] = [];
             $rkp['volume_' . $i] = [];
             $rkp['sasaran_' . $i] = [];
@@ -39,6 +40,7 @@ class ExportRkpdesaController extends Controller
                     array_push($rkp['c_' . $i], $row->kegiatan->kd_rek);
                     array_push($rkp['no_' . $i], $no);
                     array_push($rkp['kegiatan_' . $i], $row->kegiatan->nama);
+                    array_push($rkp['sdgs_' . $i], $row->sdgs);
                     array_push($rkp['lokasi_' . $i], $row->lokasi);
                     array_push($rkp['volume_' . $i], $row->volume . ' ' . $row->satuan);
                     array_push($rkp['sasaran_' . $i], $row->sasaran);
@@ -58,6 +60,7 @@ class ExportRkpdesaController extends Controller
             $rkp['c_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['c_' . $i]);
             $rkp['no_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['no_' . $i]);
             $rkp['kegiatan_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['kegiatan_' . $i]);
+            $rkp['sdgs_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['sdgs_' . $i]);
             $rkp['lokasi_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['lokasi_' . $i]);
             $rkp['volume_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['volume_' . $i]);
             $rkp['sasaran_' . $i] = new ExcelParam(SPECIAL_ARRAY_TYPE, $rkp['sasaran_' . $i]);

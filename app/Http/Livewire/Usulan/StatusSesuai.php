@@ -2,18 +2,24 @@
 
 namespace App\Http\Livewire\Usulan;
 
+use App\Models\Sdgs;
 use App\Models\Usulan;
 use Livewire\Component;
 
 class StatusSesuai extends Component
 {
-    public $sdgs, $satuan, $volume, $usulan, $status;
+    public $sdgs, $satuan, $volume, $usulan, $status, $listSdgs;
     protected $listeners = ['getUsulanStatus'];
 
     public function getUsulanStatus($id, $status)
     {
         $this->usulan = Usulan::find($id);
         $this->status = $status;
+    }
+
+    public function mount()
+    {
+        $this->listSdgs = Sdgs::all();
     }
 
     public function render()
@@ -31,8 +37,9 @@ class StatusSesuai extends Component
         $this->resetValidation();
     }
 
-    public function update()
+    public function update($formData)
     {
+        $this->sdgs = $formData['sdgs'];
         $dataValid = $this->validate([
             'sdgs' => 'required|string',
             'volume' => 'required|integer',
