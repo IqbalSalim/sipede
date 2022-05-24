@@ -38,7 +38,7 @@
                         </select>
 
 
-                        <div x-data="dropdownSdgs()" x-init="loadOptions()" x-on:items-load.window="clearValues()"
+                        <div x-data="dropdownSdgs()" x-init="loadOptions()" x-on:items-load-sdgs.window="clearValues()"
                             class="flex flex-col items-center w-full">
                             <input name="sdgs" type="hidden" x-bind:value="selectedValues()">
                             <div class="relative inline-block w-full">

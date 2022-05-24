@@ -35,6 +35,7 @@ class StatusSesuai extends Component
         $this->usulan = null;
         $this->status = null;
         $this->resetValidation();
+        $this->dispatchBrowserEvent('items-load-sdgs');
     }
 
     public function update($formData)
