@@ -16,7 +16,7 @@ class IndexUsulan extends Component
 
     public $filter_tahun, $filter_bidang;
     public $bidangs;
-    public $paginate = 5, $search, $deleteId, $status, $usulan, $statusTemp, $bidang, $tahun;
+    public $paginate = 5, $paginate1 = 5, $search, $deleteId, $status, $usulan, $statusTemp, $bidang, $tahun, $tahun1;
     protected $queryString = ['search'];
 
     protected $listeners = ['delete', 'render', 'updateStatus', 'updateStatusSesuai'];
@@ -24,6 +24,7 @@ class IndexUsulan extends Component
     public function mount()
     {
         $this->tahun = date('Y') + 1;
+        $this->tahun1 = date('Y');
         $this->bidangs = Bidang::all();
 
 
@@ -42,6 +43,7 @@ class IndexUsulan extends Component
                 Usulan::where('tahun', $this->tahun)->cariBidang($this->bidang)->cariKegiatan($this->search)->latest()->paginate($this->paginate),
 
             'tahuns' => Usulan::select('tahun')->groupBy('tahun')->get(),
+            'belumTerlaksana' => Usulan::where('tahun', $this->tahun1)->where('status_kegiatan', 'belum terlaksana')->latest()->paginate($this->paginate1),
         ]);
     }
 
