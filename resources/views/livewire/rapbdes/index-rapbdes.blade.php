@@ -21,7 +21,11 @@
 
 
         <div class="flex flex-row justify-between py-2 space-x-8 border-b-2 border-gray-200">
-            <button class="text-sm btn-primary" @click="modal = true">Tambah Pendapatan</button>
+            <div>
+                @can('olah rapb')
+                    <button class="text-sm btn-primary" @click="modal = true">Tambah Pendapatan</button>
+                @endcan
+            </div>
             @if (count($pendapatans) !== 0)
                 <div>
                     <form action="{{ url('export-rapbdes') }}" method="POST" novalidate>

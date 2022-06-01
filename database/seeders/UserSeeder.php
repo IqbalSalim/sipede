@@ -23,26 +23,26 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
-                'password' => '12345678',
-                'role' => '1',
+                'password' => 'password',
+                'role' => 'admin',
             ],
             [
                 'name' => 'Kepala Desa',
                 'email' => 'kades@gmail.com',
-                'password' => '12345678',
-                'role' => '2',
+                'password' => 'password',
+                'role' => 'kepala desa',
             ],
             [
                 'name' => 'Sekretaris Desa',
                 'email' => 'sekretaris@gmail.com',
-                'password' => '12345678',
-                'role' => '3',
+                'password' => 'password',
+                'role' => 'sekretaris',
             ],
             [
                 'name' => 'Tim Penyusun',
                 'email' => 'timpenyusun@gmail.com',
-                'password' => '12345678',
-                'role' => '4',
+                'password' => 'password',
+                'role' => 'tim penyusun',
             ],
         ];
 
@@ -53,19 +53,9 @@ class UserSeeder extends Seeder
                 'password' => Hash::make($row['password']),
             ]);
 
+            $role = Role::where('name', $row['role'])->first();
             $user = User::where('email', $row['email'])->first();
-            $user->assignRole($row['role']);
+            $user->assignRole($role);
         }
-
-        $permission = Permission::create(['name' => 'crud usulan']);
-        $role = Role::where('name', 'sekretaris')->first();
-        $role->givePermissionTo($permission);
-        // $permission = Permission::where('name', 'crud usulan')->first();
-        // $permission->assignRole($role);
-
-        $role = Role::where('name', 'admin')->first();
-        $role->givePermissionTo($permission);
-        // $permission = Permission::where('name', 'crud usulan')->first();
-        // $permission->assignRole($role);
     }
 }

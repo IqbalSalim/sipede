@@ -74,16 +74,16 @@ Route::group(['prefix' => '/transparansi', 'as' => 'transparansi'], function () 
 
     Route::get('/guest-realisasi', GuestRealisasi::class)->name('.guest-realisasi');
     Route::get('/apb', Guest::class)->name('.apb');
-    Route::get('/apb-index', IndexApb::class)->name('.apb-index');
+    Route::get('/apb-index', IndexApb::class)->name('.apb-index')->middleware('permission:olah apb');
 
     Route::get('/rkp', GuestRkp::class)->name('.rkp');
-    Route::get('/rkp-index', IndexRkp::class)->name('.rkp-index');
-    Route::get('/realisasi', IndexRealisasi::class)->name('.realisasi');
+    Route::get('/rkp-index', IndexRkp::class)->name('.rkp-index')->middleware('permission:olah rkp');
+    Route::get('/realisasi', IndexRealisasi::class)->name('.realisasi')->middleware('permission:olah realisasi|lihat realisasi');
 });
 
 Route::group(['prefix' => '/warta', 'as' => 'warta'], function () {
     Route::get('/warta-kegiatan', GuestWarta::class)->name('.warta-kegiatan');
-    Route::get('/warta-index', IndexWarta::class)->name('.warta-index');
+    Route::get('/warta-index', IndexWarta::class)->name('.warta-index')->middleware('permission:olah warta');
     Route::get('/warta-show/{id}', ShowWarta::class)->name('.warta-show');
 });
 
@@ -106,19 +106,19 @@ Route::post('/export-apbdes', [ExportApbdesController::class, 'exportApbdes'])->
 Route::get('/kegiatan', IndexKegiatan::class)->middleware(['auth'])->name('kegiatan');
 
 Route::group(['prefix' => '/master', 'as' => 'master', 'middleware' => 'auth'], function () {
-    Route::get('/kegiatan', IndexKegiatan::class)->name('.kegiatan');
-    Route::get('/user', IndexUser::class)->name('.user');
-    Route::get('/visi-misi', EditVisiMisi::class)->name('.visi-misi');
-    Route::get('/sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa');
-    Route::get('/gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum');
-    Route::get('/perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa');
+    Route::get('/kegiatan', IndexKegiatan::class)->name('.kegiatan')->middleware('permission:olah warta');
+    Route::get('/user', IndexUser::class)->name('.user')->middleware('permission:olah user');
+    Route::get('/visi-misi', EditVisiMisi::class)->name('.visi-misi')->middleware('permission:olah profil');
+    Route::get('/sejarah-desa', EditSejarahDesa::class)->name('.sejarah-desa')->middleware('permission:olah profil');
+    Route::get('/gambaran-umum', EditGambaranUmum::class)->name('.gambaran-umum')->middleware('permission:olah profil');
+    Route::get('/perangkat-desa', EditPerangkatDesa::class)->name('.perangkat-desa')->middleware('permission:olah profil');
 });
 
 Route::group(['prefix' => '/perencanaan', 'as' => 'perencanaan', 'middleware' => 'auth'], function () {
-    Route::get('/usulan', IndexUsulan::class)->name('.usulan');
-    Route::get('/rkp-desa', IndexRkpdesa::class)->name('.rkp-desa');
-    Route::get('/rapb-desa', IndexRapbdes::class)->name('.rapb-desa');
-    Route::get('/apb-desa', IndexApbdesa::class)->name('.apb-desa');
+    Route::get('/usulan', IndexUsulan::class)->name('.usulan')->middleware('permission:olah usulan|lihat usulan');
+    Route::get('/rkp-desa', IndexRkpdesa::class)->name('.rkp-desa')->middleware('permission:olah rkp|lihat rkp');
+    Route::get('/rapb-desa', IndexRapbdes::class)->name('.rapb-desa')->middleware('permission:olah rapb|lihat rapb');
+    Route::get('/apb-desa', IndexApbdesa::class)->name('.apb-desa')->middleware('permission:olah apb|lihat apb');
 });
 
 

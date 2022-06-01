@@ -95,17 +95,18 @@
                             </th>
                         @endcannot
 
-                        @can('crud usulan')
+                        @can('olah usulan')
                             <th scope="col"
                                 class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
                                 Status
                             </th>
-
-                            <th scope="col"
-                                class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
-                                <span class="sr-only">Edit</span>
-                                <span class="sr-only">Hapus</span>
-                            </th>
+                            @role('sekretaris')
+                                <th scope="col"
+                                    class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase ">
+                                    <span class="sr-only">Edit</span>
+                                    <span class="sr-only">Hapus</span>
+                                </th>
+                            @endrole
                         @endcan
                     </tr>
                 </thead>
@@ -134,15 +135,17 @@
                                     lengkap
                                 </td>
                             @endif
-                            @can('crud usulan')
+                            @can('olah usulan')
                                 <td class="px-2 md:px-6">
                                     <div class="flex flex-row items-center space-x-4">
                                         <button type="button" class="text-xs btn-primary"
                                             wire:click="$emit('getDetailRkp', {{ $row->id }})"
                                             @click="modalDetail = true">detail</button>
-                                        <button type="button" class="text-xs btn-secondary"
-                                            wire:click="$emit('getEditRkp', {{ $row->id }})"
-                                            @click="modal = true">edit</button>
+                                        @role('sekretaris')
+                                            <button type="button" class="text-xs btn-secondary"
+                                                wire:click="$emit('getEditRkp', {{ $row->id }})"
+                                                @click="modal = true">edit</button>
+                                        @endrole
                                     </div>
                                 </td>
                             @endcan

@@ -20,80 +20,109 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link :active="request()->routeIs('usulan.*')" class="cursor-pointer">
-                                {{ __('Master') }}
-                            </x-nav-link>
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('master.kegiatan')" :active="request()->routeIs('master.kegiatan')">
-                                {{ __('Kegiatan') }}
-                            </x-dropdown-link>
-                            @hasrole('admin')
-                                <x-dropdown-link :href="route('master.user')" :active="request()->routeIs('master.user')">
-                                    {{ __('User') }}
-                                </x-dropdown-link>
-                            @endhasrole
-                            <x-dropdown-link :href="route('master.visi-misi')" :active="request()->routeIs('master.visi-misi')">
-                                {{ __('Visi Misi') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('master.sejarah-desa')" :active="request()->routeIs('master.sejarah-desa')">
-                                {{ __('Sejarah Desa') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('master.gambaran-umum')" :active="request()->routeIs('master.gambaran-umum')">
-                                {{ __('Gambaran Umum') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('master.perangkat-desa')" :active="request()->routeIs('master.perangkat-desa')">
-                                {{ __('Perangkat Desa') }}
-                            </x-dropdown-link>
-                        </x-slot>
+                    @unlessrole('kepala desa|tim penyusun')
+                        <x-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <x-nav-link :active="request()->routeIs('usulan.*')" class="cursor-pointer">
+                                    {{ __('Master') }}
+                                </x-nav-link>
+                            </x-slot>
+                            <x-slot name="content">
+                                @can('olah kegiatan')
+                                    <x-dropdown-link :href="route('master.kegiatan')" :active="request()->routeIs('master.kegiatan')">
+                                        {{ __('Kegiatan') }}
+                                    </x-dropdown-link>
+                                @endcan
+                                @hasrole('admin')
+                                    <x-dropdown-link :href="route('master.user')" :active="request()->routeIs('master.user')">
+                                        {{ __('User') }}
+                                    </x-dropdown-link>
+                                @endhasrole
+                                @can('olah profil')
+                                    <x-dropdown-link :href="route('master.visi-misi')" :active="request()->routeIs('master.visi-misi')">
+                                        {{ __('Visi Misi') }}
+                                    </x-dropdown-link>
+                                    <x-dropdown-link :href="route('master.sejarah-desa')" :active="request()->routeIs('master.sejarah-desa')">
+                                        {{ __('Sejarah Desa') }}
+                                    </x-dropdown-link>
+                                    <x-dropdown-link :href="route('master.gambaran-umum')" :active="request()->routeIs('master.gambaran-umum')">
+                                        {{ __('Gambaran Umum') }}
+                                    </x-dropdown-link>
+                                    <x-dropdown-link :href="route('master.perangkat-desa')" :active="request()->routeIs('master.perangkat-desa')">
+                                        {{ __('Perangkat Desa') }}
+                                    </x-dropdown-link>
+                                @endcan
 
-                    </x-dropdown>
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link :active="request()->routeIs('perencanaan.*')" class="cursor-pointer">
-                                {{ __('Perencanaan') }}
-                            </x-nav-link>
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('perencanaan.usulan')" :active="request()->routeIs('perencanaan.usulan')">
-                                {{ __('Usulan') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.rkp-desa')" :active="request()->routeIs('perencanaan.rkp-desa')">
-                                {{ __('RKP Desa') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.rapb-desa')" :active="request()->routeIs('perencanaan.rapb-desa')">
-                                {{ __('RAPB Desa') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('perencanaan.apb-desa')" :active="request()->routeIs('perencanaan.apb-desa')">
-                                {{ __('APB Desa') }}
-                            </x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
+                            </x-slot>
 
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link :active="request()->routeIs('transparansi.*')" class="cursor-pointer">
-                                {{ __('Transparansi') }}
-                            </x-nav-link>
-                        </x-slot>
+                        </x-dropdown>
+                    @endunlessrole
 
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('transparansi.realisasi')" :active="request()->routeIs('transparansi.realisasi')">
-                                {{ __('Realisasi') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('transparansi.apb-index')" :active="request()->routeIs('transparansi.apb-index')">
-                                {{ __('APB Desa') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('transparansi.rkp-index')" :active="request()->routeIs('transparansi.rkp-index')">
-                                {{ __('RKP Desa') }}
-                            </x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
-                    <x-nav-link :href="route('warta.warta-index')" :active="request()->routeIs('warta.warta-index')">
-                        {{ __('Warta Kegiatan') }}
-                    </x-nav-link>
+                    @unlessrole('admin')
+                        <x-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <x-nav-link :active="request()->routeIs('perencanaan.*')" class="cursor-pointer">
+                                    {{ __('Perencanaan') }}
+                                </x-nav-link>
+                            </x-slot>
+                            <x-slot name="content">
+                                @canany(['olah usulan', 'lihat usulan'])
+                                    <x-dropdown-link :href="route('perencanaan.usulan')" :active="request()->routeIs('perencanaan.usulan')">
+                                        {{ __('Usulan') }}
+                                    </x-dropdown-link>
+                                @endcanany
+                                @canany(['olah rkp', 'lihat rkp'])
+                                    <x-dropdown-link :href="route('perencanaan.rkp-desa')" :active="request()->routeIs('perencanaan.rkp-desa')">
+                                        {{ __('RKP Desa') }}
+                                    </x-dropdown-link>
+                                @endcanany
+                                @canany(['olah rapb', 'lihat rapb'])
+                                    <x-dropdown-link :href="route('perencanaan.rapb-desa')" :active="request()->routeIs('perencanaan.rapb-desa')">
+                                        {{ __('RAPB Desa') }}
+                                    </x-dropdown-link>
+                                @endcanany
+                                @canany(['olah apb', 'lihat apb'])
+                                    <x-dropdown-link :href="route('perencanaan.apb-desa')" :active="request()->routeIs('perencanaan.apb-desa')">
+                                        {{ __('APB Desa') }}
+                                    </x-dropdown-link>
+                                @endcanany
+                            </x-slot>
+                        </x-dropdown>
+                    @endunlessrole
+
+
+                    @unlessrole('admin|tim penyusun')
+                        <x-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <x-nav-link :active="request()->routeIs('transparansi.*')" class="cursor-pointer">
+                                    {{ __('Transparansi') }}
+                                </x-nav-link>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                @canany(['olah realisasi', 'lihat realisasi'])
+                                    <x-dropdown-link :href="route('transparansi.realisasi')" :active="request()->routeIs('transparansi.realisasi')">
+                                        {{ __('Realisasi') }}
+                                    </x-dropdown-link>
+                                @endcanany
+                                @can('olah apb')
+                                    <x-dropdown-link :href="route('transparansi.apb-index')" :active="request()->routeIs('transparansi.apb-index')">
+                                        {{ __('APB Desa') }}
+                                    </x-dropdown-link>
+                                @endcan
+                                @can('olah rkp')
+                                    <x-dropdown-link :href="route('transparansi.rkp-index')" :active="request()->routeIs('transparansi.rkp-index')">
+                                        {{ __('RKP Desa') }}
+                                    </x-dropdown-link>
+                                @endcan
+                            </x-slot>
+                        </x-dropdown>
+                    @endunlessrole
+                    @can('olah warta')
+                        <x-nav-link :href="route('warta.warta-index')" :active="request()->routeIs('warta.warta-index')">
+                            {{ __('Warta Kegiatan') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 

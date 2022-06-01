@@ -104,8 +104,10 @@
             </div>
             <div>
                 @if ($infoKegiatan !== null && $infoKegiatan !== '')
-                    <button class="text-sm btn-primary" wire:click="$emit('getKegiatan', {{ $infoKegiatan->id }})"
-                        @click="modal = true">Tambah Realisasi</button>
+                    @can('olah realisasi')
+                        <button class="text-sm btn-primary" wire:click="$emit('getKegiatan', {{ $infoKegiatan->id }})"
+                            @click="modal = true">Tambah Realisasi</button>
+                    @endcan
                 @endif
             </div>
 
@@ -152,11 +154,13 @@
                             </td>
                             <td class="px-2 md:px-6">
                                 <div class="flex flex-row items-center space-x-4">
-                                    <button type="button" class="text-xs btn-secondary"
-                                        wire:click="$emit('getRealisasi', {{ $row->id }})"
-                                        @click="modalEdit = true">edit</button>
-                                    <button wire:click="alertConfirm({{ $row->id }})" type="button"
-                                        class="text-xs btn-danger">hapus</button>
+                                    @can('olah realisasi')
+                                        <button type="button" class="text-xs btn-secondary"
+                                            wire:click="$emit('getRealisasi', {{ $row->id }})"
+                                            @click="modalEdit = true">edit</button>
+                                        <button wire:click="alertConfirm({{ $row->id }})" type="button"
+                                            class="text-xs btn-danger">hapus</button>
+                                    @endcan
                                 </div>
                             </td>
 
@@ -165,22 +169,25 @@
                 </tbody>
             </table>
             {{-- {{ $kegiatans->links() }} --}}
-            <div class="flex flex-col items-center my-2">
-                @if (count($kegiatans) != 0)
-                    @if ($kegiatans[0]->usulan->status_kegiatan != 'terlaksana')
-                        <div class="mt-2">
-                            <button wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'terlaksana')"
-                                class="text-sm btn-success">Ubah Status Kegiatan Menjadi Terlaksana</button>
-                        </div>
-                    @else
-                        <div class="mt-2">
-                            <button
-                                wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'belum terlaksana')"
-                                class="text-sm btn-warning">Ubah Status Kegiatan Menjadi Belum Terlaksana</button>
-                        </div>
+            @can('olah realisasi')
+                <div class="flex flex-col items-center my-2">
+                    @if (count($kegiatans) != 0)
+                        @if ($kegiatans[0]->usulan->status_kegiatan != 'terlaksana')
+                            <div class="mt-2">
+                                <button wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'terlaksana')"
+                                    class="text-sm btn-success">Ubah Status Kegiatan Menjadi Terlaksana</button>
+                            </div>
+                        @else
+                            <div class="mt-2">
+                                <button
+                                    wire:click="updateStatusKegiatan({{ $kegiatans[0]->usulan_id }}, 'belum terlaksana')"
+                                    class="text-sm btn-warning">Ubah Status Kegiatan Menjadi Belum Terlaksana</button>
+                            </div>
+                        @endif
                     @endif
-                @endif
-            </div>
+                </div>
+            @endcan
+
         </div>
 
 

@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class IndexKegiatan extends Component
 {
+
     protected $listeners = ['delete', 'render'];
     public $deleteId;
-
 
 
     public function render()

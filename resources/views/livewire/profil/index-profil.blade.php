@@ -9,8 +9,7 @@
         }
     @endphp
     <div class="px-4 py-12 md:px-6 lg:px-8 ">
-        <div class="px-4 bg-white rounded-lg shadow-lg "
-            x-data="{selected: '{{ $q }}', activeClasses: 'border-b-2 text-primary border-primary',inactiveClasses: 'opacity-50 hover:opacity-100'}">
+        <div class="px-4 bg-white rounded-lg shadow-lg " x-data="{ selected: '{{ $q }}', activeClasses: 'border-b-2 text-primary border-primary', inactiveClasses: 'opacity-50 hover:opacity-100' }">
 
             <ul
                 class="flex flex-col items-center w-full px-1 py-2 space-y-2 text-sm font-semibold capitalize border-b-2 border-gray-100 md:items-center md:space-x-6 md:flex-row md:space-y-0 md:text-base text-default">
@@ -34,21 +33,29 @@
 
 
             <div x-show="selected === 'visi-misi'" class="p-4 prose max-w-none text-default">
-                {!! $profil->visi_misi !!}
+                @if ($profil !== null)
+                    {!! $profil->visi_misi !!}
+                @endif
             </div>
 
             <div x-show="selected === 'sejarah-desa'" class="p-4 prose max-w-none text-default">
-                {!! $profil->sejarah_desa !!}
+                @if ($profil !== null)
+                    {!! $profil->sejarah_desa !!}
+                @endif
             </div>
             <div x-show="
                 selected==='gambaran-umum'" class="p-4 prose max-w-none text-default">
-                {!! $profil->gambaran_umum !!}
+                @if ($profil !== null)
+                    {!! $profil->gambaran_umum !!}
+                @endif
             </div>
 
             <div x-show="selected === 'perangkat-desa'" class="p-4">
-                <div>
-                    <img src="{{ asset('storage/' . $profil->perangkat_desa) }}" alt="">
-                </div>
+                @if ($profil !== null)
+                    <div>
+                        <img src="{{ asset('storage/' . $profil->perangkat_desa) }}" alt="">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -26,7 +26,9 @@
 
         <div class="flex flex-row justify-between py-2 border-b-2 border-gray-200">
             <div>
-                <button class="text-sm btn-primary" @click="modal = true">Tambah Usulan</button>
+                @can('olah usulan')
+                    <button class="text-sm btn-primary" @click="modal = true">Tambah Usulan</button>
+                @endcan
             </div>
             <div>
                 <form action="{{ url('export-usulan') }}" method="POST" novalidate>
@@ -137,7 +139,7 @@
                             <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
                                 {{ $row->lokasi }}
                             </td>
-                            @cannot('crud usulan')
+                            @unlessrole('sekretaris')
                                 <td @class([
                                     'px-4 py-3 text-xs font-medium capitalize md:px-6',
                                     'text-warning' => $row->status == 'verifikasi',
@@ -146,8 +148,8 @@
                                 ]) class="">
                                     {{ $row->status }}
                                 </td>
-                            @endcannot
-                            @can('crud usulan')
+                            @endunlessrole
+                            @role('sekretaris')
                                 <td>
                                     <select wire:model.defer="status.{{ $row->id }}"
                                         wire:change.defer='changeStatus({{ $row->id }})' @class([
@@ -178,7 +180,7 @@
                                             class="text-xs btn-danger">hapus</button>
                                     </div>
                                 </td>
-                            @endcan
+                            @endrole
                         </tr>
                     @endforeach
                 </tbody>
@@ -278,9 +280,11 @@
                                     <button type="button" class="text-xs btn-primary"
                                         wire:click="$emit('getDetailUsulan', {{ $row->id }})"
                                         @click="modalDetail = true">detail</button>
-                                    <button type="button" class="text-xs btn-secondary"
-                                        wire:click="$emit('getUsulKembali', {{ $row->id }})"
-                                        @click="usulKembali = true">Usulkan</button>
+                                    @can('olah usulan')
+                                        <button type="button" class="text-xs btn-secondary"
+                                            wire:click="$emit('getUsulKembali', {{ $row->id }})"
+                                            @click="usulKembali = true">Usulkan</button>
+                                    @endcan
                                 </div>
                             </td>
                         </tr>
