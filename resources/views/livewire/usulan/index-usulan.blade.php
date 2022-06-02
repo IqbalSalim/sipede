@@ -102,14 +102,14 @@
                             class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
                             Lokasi
                         </th>
-                        @cannot('crud usulan')
+                        @unlessrole('sekretaris')
                             <th scope="col"
                                 class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
                                 Status
                             </th>
-                        @endcannot
+                        @endunlessrole
 
-                        @can('crud usulan')
+                        @role('sekretaris')
                             <th scope="col"
                                 class="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase md:px-6">
                                 Status
@@ -120,7 +120,7 @@
                                 <span class="sr-only">Edit</span>
                                 <span class="sr-only">Hapus</span>
                             </th>
-                        @endcan
+                        @endunlessrole
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">

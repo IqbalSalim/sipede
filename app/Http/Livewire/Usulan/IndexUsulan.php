@@ -23,7 +23,8 @@ class IndexUsulan extends Component
 
     public function mount()
     {
-        $this->tahun = date('Y') + 1;
+        $tahuns = Usulan::select('tahun')->groupBy('tahun')->get();
+        $this->tahun = $tahuns[count($tahuns) - 1]->tahun;
         $this->tahun1 = date('Y');
         $this->bidangs = Bidang::all();
 
