@@ -97,7 +97,7 @@
 
 
                 <div class="md:w-3/12">
-                    <x-label for="search" :value="__('Nama Kegiatan')" />
+                    <x-label for="search" :value="__('Cari Rincian')" />
                     <x-input wire:model="search" id="search" class="block w-full mt-1 text-sm" placeholder="Cari..."
                         type="text" name="search" autofocus />
                 </div>

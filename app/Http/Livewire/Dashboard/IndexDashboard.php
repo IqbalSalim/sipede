@@ -12,22 +12,18 @@ use Livewire\Component;
 
 class IndexDashboard extends Component
 {
-    public $total_rka, $total_rkp, $total_apb, $total_musrenbang;
-    public $apbs, $rkps, $rkas, $musrenbangs;
+    public $total_rkp, $total_apb;
+    public $apbs, $rkps;
 
 
     public function render()
     {
         $this->total_rkp = Rkp::count();
-        $this->total_rka = Rka::count();
         $this->total_apb = Apb::count();
-        $this->total_musrenbang = Musrenbang::count();
 
         $this->apbs = Apb::latest()->limit(5)->get();
         $this->rkps = Rkp::latest()->limit(5)->get();
-        $this->rkas = Rka::latest()->limit(5)->get();
-        $this->musrenbangs = Musrenbang::latest()->limit(5)->get();
-        // dd($this->rkps);
+
         return view('livewire.dashboard.index-dashboard');
     }
 }
