@@ -12,8 +12,8 @@ class IndexApbdesa extends Component
 {
     public function mount()
     {
-        $this->tahun = date('Y') + 1;
-        $years = Pendapatan::select('tahun')->groupBy('tahun')->get();
+        $tahuns = Pendapatan::select('tahun')->groupBy('tahun')->get();
+        $this->tahun = $tahuns[count($tahuns) - 1]->tahun;
         // $pendapatan = Pendapatan::where('tahun', $this->tahun)->get();
 
         // $que = Usulan::with('kegiatan')->where('tahun', $this->tahun)->where('status', 'sesuai')
