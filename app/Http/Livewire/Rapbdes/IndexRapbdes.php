@@ -20,7 +20,8 @@ class IndexRapbdes extends Component
 
     public function mount()
     {
-        $this->tahun = date('Y') + 1;
+        $tahuns = Pendapatan::select('tahun')->groupBy('tahun')->get();
+        $this->tahun = $tahuns[count($tahuns) - 1]->tahun;
     }
 
     public function render()
