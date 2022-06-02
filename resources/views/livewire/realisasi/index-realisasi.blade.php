@@ -18,17 +18,7 @@
 
 
 
-        {{-- <div class="flex flex-row justify-between py-2 border-b-2 border-gray-200">
 
-            <div>
-                <form action="{{ url('export-usulan') }}" method="POST" novalidate>
-                    @csrf
-                    <input type="hidden" name="tahun" value="{{ $tahun }}">
-                    <button type="submit" class="text-sm btn-success">Export Excel</button>
-                </form>
-            </div>
-
-        </div> --}}
         <div class="flex flex-row items-end justify-between mt-2">
             <table class="text-sm">
                 <tr>
@@ -55,6 +45,15 @@
                     <td class="font-medium">
                         @if ($infoKegiatan !== null && $infoKegiatan !== '')
                             {{ $infoKegiatan->kegiatan->nama }}
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>:</td>
+                    <td class="font-medium capitalize">
+                        @if ($infoKegiatan !== null && $infoKegiatan !== '')
+                            {{ $infoKegiatan->status_kegiatan }}
                         @endif
                     </td>
                 </tr>
@@ -87,7 +86,8 @@
                     <select name="kegiatan" id="kegiatan" wire:model="kegiatan"
                         class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                         <option value="">-- Pilih Kegiatan --</option>
-                        @if ($usulans)
+
+                        @if ($usulans !== null)
                             @foreach ($usulans as $item)
                                 <option value="{{ $item->id }}">{{ $item->kegiatan->nama }}</option>
                             @endforeach

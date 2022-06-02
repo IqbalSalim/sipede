@@ -24,15 +24,6 @@
         <div class="flex flex-row items-center justify-between py-2">
             <div class="flex flex-row space-x-4">
                 <div>
-                    <x-label for="paginate" :value="__('Item')" />
-                    <select name="paginate" id="paginate" wire:model="paginate"
-                        class="block w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                    </select>
-                </div>
-                <div>
                     <x-label for="tahun" :value="__('Tahun')" />
                     <select name="tahun" id="tahun" wire:model="tahun"
                         class="w-full mt-1 text-sm capitalize border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
@@ -162,7 +153,7 @@
                             @if ($kegiatans[$i]->kegiatan->subbidang->bidang->nama == $kegiatans[$i - 1]->kegiatan->subbidang->bidang->nama)
                                 <tr>
                                     <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
-                                        {{ $kegiatans[$i]->kegiatan->subbidang->bidang_id .$kegiatans[$i]->kegiatan->subbidang->kd_rek .$kegiatans[$i]->kegiatan->kd_rek }}
+                                        {{ $kegiatans[$i]->kegiatan->subbidang->bidang_id . $kegiatans[$i]->kegiatan->subbidang->kd_rek . $kegiatans[$i]->kegiatan->kd_rek }}
                                     </td>
                                     <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
                                         {{ $kegiatans[$i]->kegiatan->nama }}
@@ -181,7 +172,7 @@
                                 </tr>
                                 <tr>
                                     <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
-                                        {{ $kegiatans[$i]->kegiatan->subbidang->bidang_id .$kegiatans[$i]->kegiatan->subbidang->kd_rek .$kegiatans[$i]->kegiatan->kd_rek }}
+                                        {{ $kegiatans[$i]->kegiatan->subbidang->bidang_id . $kegiatans[$i]->kegiatan->subbidang->kd_rek . $kegiatans[$i]->kegiatan->kd_rek }}
                                     </td>
                                     <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
                                         {{ $kegiatans[$i]->kegiatan->nama }}
@@ -201,7 +192,7 @@
                             </tr>
                             <tr>
                                 <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
-                                    {{ $kegiatans[$i]->kegiatan->subbidang->bidang_id .$kegiatans[$i]->kegiatan->subbidang->kd_rek .$kegiatans[$i]->kegiatan->kd_rek }}
+                                    {{ $kegiatans[$i]->kegiatan->subbidang->bidang_id . $kegiatans[$i]->kegiatan->subbidang->kd_rek . $kegiatans[$i]->kegiatan->kd_rek }}
                                 </td>
                                 <td class="px-4 py-3 text-xs text-gray-500 md:px-6">
                                     {{ $kegiatans[$i]->kegiatan->nama }}

@@ -14,12 +14,6 @@ class IndexApbdesa extends Component
     {
         $tahuns = Pendapatan::select('tahun')->groupBy('tahun')->get();
         $this->tahun = $tahuns[count($tahuns) - 1]->tahun;
-        // $pendapatan = Pendapatan::where('tahun', $this->tahun)->get();
-
-        // $que = Usulan::with('kegiatan')->where('tahun', $this->tahun)->where('status', 'sesuai')
-        //     ->orderBy(Kegiatan::with('subbidang')->select('kd_rek')->whereColumn('kegiatans.id', 'usulans.kegiatan_id')->orderBy(Subbidang::select('kd_rek')->whereColumn('subbidangs.id', 'kegiatans.subbidang_id')))->get();
-
-        // dd($que);
     }
 
     public function render()

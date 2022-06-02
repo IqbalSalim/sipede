@@ -13,7 +13,7 @@ class IndexRealisasi extends Component
     use WithPagination;
 
     public $filter_tahun, $filter_bidang;
-    public $usulans, $kegiatan;
+    public $kegiatan;
     public $paginate = 5, $search, $deleteId, $status, $usulan, $statusTemp, $bidang, $tahun;
     protected $queryString = ['search'];
 
@@ -21,13 +21,8 @@ class IndexRealisasi extends Component
 
     public function mount()
     {
-        $this->tahun = date('Y') + 1;
-        $usulan = Usulan::where('tahun', $this->tahun);
-        if (!$usulan->exists()) {
-            $this->usulans = null;
-        } else {
-            $this->usulans = $usulan->get();
-        }
+        $tahuns = Usulan::select('tahun')->groupBy('tahun')->get();
+        $this->tahun = $tahuns[count($tahuns) - 1]->tahun;
     }
 
     public function render()
@@ -36,6 +31,7 @@ class IndexRealisasi extends Component
             'infoKegiatan' => ($this->kegiatan === '' || $this->kegiatan === null) ?
                 '' :
                 Usulan::where('id', $this->kegiatan)->first(),
+            'usulans' => Usulan::where('tahun', $this->tahun)->get(),
             'tahuns' => Usulan::select('tahun')->groupBy('tahun')->get(),
             'kegiatans' => ($this->search === null) ?
                 Realisasi::where('usulan_id', $this->kegiatan)->paginate($this->paginate) :

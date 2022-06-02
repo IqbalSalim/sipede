@@ -16,8 +16,9 @@ class GuestRealisasi extends Component
 
     public function mount()
     {
-        $this->tahunTerlaksana = date('Y') + 1;
-        $this->tahunBelumTerlaksana = date('Y') + 1;
+        $tahuns = Usulan::select('tahun')->groupBy('tahun')->get();
+        $this->tahunTerlaksana = $tahuns[count($tahuns) - 1]->tahun;
+        $this->tahunBelumTerlaksana = $tahuns[count($tahuns) - 1]->tahun;
         $this->bidangTerlaksanas = Bidang::all();
         $this->bidangBelumTerlaksanas = Bidang::all();
     }

@@ -19,4 +19,11 @@ class Realisasi extends Model
     {
         return $this->belongsTo(Usulan::class, 'usulan_id');
     }
+
+    public function scopeWhereTahun($query, $tahun)
+    {
+        return $query->whereHas('usulan', function ($query) use ($tahun) {
+            $query->where('tahun', $tahun);
+        });
+    }
 }
