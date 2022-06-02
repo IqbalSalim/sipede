@@ -1,5 +1,5 @@
-<div class="" x-cloak x-data="{ modal: false, modalEdit: false }" x-on:close-modal.window="modal = false"
-    x-on:close-modal-edit.window="modalEdit = false">
+<div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8" x-cloak x-data="{ modal: false, modalEdit: false }"
+    x-on:close-modal.window="modal = false" x-on:close-modal-edit.window="modalEdit = false">
 
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">

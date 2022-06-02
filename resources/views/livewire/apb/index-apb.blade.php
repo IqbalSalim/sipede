@@ -1,4 +1,4 @@
-<div>
+<div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
     <div class="bg-gray-100" x-data="{ modalCreate: false, modalShow: false, modalEdit: false }" x-cloak x-on:close-modal.window="modalCreate = false"
         x-on:close-modal-edit.window="modalEdit = false">
         <x-slot name="header">

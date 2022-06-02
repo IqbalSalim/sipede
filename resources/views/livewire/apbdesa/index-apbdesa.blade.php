@@ -1,4 +1,4 @@
-<div class="px-4 py-12 md:px-6 lg:px-8">
+<div class="px-4 py-12 mx-auto md:px-6 max-w-7xl sm:px-6 lg:px-8">
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('APB Desa') }}
