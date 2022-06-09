@@ -4,12 +4,12 @@
 
         <x-slot name="header">
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                {{ __('Warta Kegiatan') }}
+                {{ __('User') }}
             </h2>
             <div class="flex flex-row space-x-1 text-sm text-gray-400">
                 <div class="hover:text-primary"><a href="/dashboard">Dashboard</a></div>
                 <div>-</div>
-                <div>Warta Kegiatan</div>
+                <div>User</div>
             </div>
         </x-slot>
 
