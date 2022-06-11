@@ -35,7 +35,7 @@
                 <button class="font-medium btn-primary btn-sm" wire:click.prevent='update'>Simpan</button>
             </div>
 
-            <div>
+            <div class="flex flex-col items-center">
                 <img src="{{ asset($gambar) }}" alt="">
             </div>
         </div>

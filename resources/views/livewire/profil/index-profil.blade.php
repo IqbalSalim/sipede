@@ -43,21 +43,25 @@
                     {!! $profil->sejarah_desa !!}
                 @endif
             </div>
-            <div x-show="
-                selected==='gambaran-umum'" class="p-4 prose max-w-none text-default">
+
+            <div x-show="selected === 'gambaran-umum'" class="p-4 prose max-w-none text-default">
                 @if ($profil !== null)
                     {!! $profil->gambaran_umum !!}
                 @endif
             </div>
+            <div class="p-4 prose max-w-none text-default"></div>
 
             <div x-show="selected === 'perangkat-desa'" class="p-4">
                 @if ($profil !== null)
-                    <div>
+                    <div class="flex flex-col items-center">
                         <img src="{{ asset('storage/' . $profil->perangkat_desa) }}" alt="">
                     </div>
                 @endif
             </div>
+
+
         </div>
+
     </div>
 
 </div>
@@ -207,5 +211,4 @@
         cursor: ew-resize;
         cursor: col-resize;
     }
-
 </style>
